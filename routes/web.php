@@ -53,9 +53,6 @@ Route::middleware('auth')->group(function () {
 	//booking
 	Route::resource('bookings', BookingController::class);
 
-	// reservation
-	Route::resource('reservations', ReservationController::class);
-
 	//payments
 	Route::resource('payments', PaymentController::class);
 
