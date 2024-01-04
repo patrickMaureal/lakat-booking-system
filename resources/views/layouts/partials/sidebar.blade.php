@@ -74,28 +74,12 @@
 					<span class="sidebar-text">Accomodation</span>
 				</a>
 			</li>
-			<li class="nav-item {{ request()->routeIs('users.*') ? 'active' : '' }}">
-				<a href="{{ route('users.index') }}" class="nav-link">
+			<li class="nav-item {{ request()->routeIs('activities.*') ? 'active' : '' }}">
+				<a href="{{ route('activities.index') }}" class="nav-link">
 					<span class="sidebar-icon">
-						<i class="icon icon-xs me-2  bi bi-file-plus"></i>
+						<i class="icon icon-xs me-2  bi bi-house-add"></i>
 					</span>
-					<span class="sidebar-text">Reservation</span>
-				</a>
-			</li>
-			<li class="nav-item {{ request()->routeIs('users.*') ? 'active' : '' }}">
-				<a href="{{ route('users.index') }}" class="nav-link">
-					<span class="sidebar-icon">
-						<i class="icon icon-xs me-2  bi bi-cash"></i>
-					</span>
-					<span class="sidebar-text">Payment</span>
-				</a>
-			</li>
-			<li class="nav-item {{ request()->routeIs('users.*') ? 'active' : '' }}">
-				<a href="{{ route('users.index') }}" class="nav-link">
-					<span class="sidebar-icon">
-						<i class="icon icon-xs me-2  bi bi-person-bounding-box"></i>
-					</span>
-					<span class="sidebar-text">Users</span>
+					<span class="sidebar-text">Activity</span>
 				</a>
 			</li>
 			<li role="separator" class="dropdown-divider mt-4 mb-3 border-gray-700"></li>
