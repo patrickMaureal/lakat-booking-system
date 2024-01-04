@@ -56,12 +56,12 @@
 
 						<div class="accordion-item" data-aos="fade-up" data-aos-delay="400">
 							<h3 class="accordion-header">
-								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-3">
+								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-4">
 									<i class="bi bi-question-circle question-icon"></i>
 									Are pets allowed?
 								</button>
 							</h3>
-							<div id="faq-content-3" class="accordion-collapse collapse" data-bs-parent="#faqlist">
+							<div id="faq-content-4" class="accordion-collapse collapse" data-bs-parent="#faqlist">
 								<div class="accordion-body">
 									Yes, pets are allowed at Lakat Balas Beach Adventure Camp! We ask that owners ensure their pets are well-behaved, leashed when necessary, and that they clean up after them. We're excited to welcome your furry friends to join in the beach adventure experience with you.
 								</div>
