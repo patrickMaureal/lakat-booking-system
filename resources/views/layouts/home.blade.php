@@ -30,6 +30,9 @@
 
   <!-- Template Main CSS File -->
   <link href="{{ asset('theme/herobiz/css/main.css') }}" rel="stylesheet">
+
+	@stack('styles')
+
 </head>
 
 <body>
