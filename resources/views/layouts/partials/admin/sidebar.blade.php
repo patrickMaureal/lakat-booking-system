@@ -74,14 +74,6 @@
 					<span class="sidebar-text">Accomodation</span>
 				</a>
 			</li>
-			<li class="nav-item {{ request()->routeIs('activities.*') ? 'active' : '' }}">
-				<a href="{{ route('activities.index') }}" class="nav-link">
-					<span class="sidebar-icon">
-						<i class="icon icon-xs me-2  bi bi-activity"></i>
-					</span>
-					<span class="sidebar-text">Activity</span>
-				</a>
-			</li>
 			<li class="nav-item {{ request()->routeIs('bookings.*') ? 'active' : '' }}">
 				<a href="{{ route('bookings.index') }}" class="nav-link">
 					<span class="sidebar-icon">
