@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Booking\BookingController;
 use App\Http\Controllers\Customer\CustomerController;
+use App\Http\Controllers\Payment\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Reservation\ReservationController;
 use App\Http\Controllers\User\UserController;
@@ -55,7 +56,8 @@ Route::middleware('auth')->group(function () {
 	// reservation
 	Route::resource('reservations', ReservationController::class);
 
-
+	//payments
+	Route::resource('payments', PaymentController::class);
 
 
 
