@@ -7,5 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Reservation extends Model
 {
-    use HasFactory;
+	use HasFactory;
+
+	protected $fillable = [
+		'confirmation_code',
+		'status',
+	];
 }
