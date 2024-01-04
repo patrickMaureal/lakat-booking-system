@@ -4,6 +4,7 @@ use App\Http\Controllers\Accomodation\AccomodationController;
 use App\Http\Controllers\Activity\ActivityController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\PasswordController;
+use App\Http\Controllers\Booking\BookingController;
 use App\Http\Controllers\Customer\CustomerController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\User\UserController;
@@ -46,6 +47,10 @@ Route::middleware('auth')->group(function () {
 
 	//activity
 	Route::resource('activities', ActivityController::class);
+
+	//booking
+	Route::resource('bookings', BookingController::class);
+
 
 
 

@@ -77,9 +77,17 @@
 			<li class="nav-item {{ request()->routeIs('activities.*') ? 'active' : '' }}">
 				<a href="{{ route('activities.index') }}" class="nav-link">
 					<span class="sidebar-icon">
-						<i class="icon icon-xs me-2  bi bi-house-add"></i>
+						<i class="icon icon-xs me-2  bi bi-activity"></i>
 					</span>
 					<span class="sidebar-text">Activity</span>
+				</a>
+			</li>
+			<li class="nav-item {{ request()->routeIs('bookings.*') ? 'active' : '' }}">
+				<a href="{{ route('bookings.index') }}" class="nav-link">
+					<span class="sidebar-icon">
+						<i class="icon icon-xs me-2  bi bi-bookmark-check"></i>
+					</span>
+					<span class="sidebar-text">Booking</span>
 				</a>
 			</li>
 			<li role="separator" class="dropdown-divider mt-4 mb-3 border-gray-700"></li>
