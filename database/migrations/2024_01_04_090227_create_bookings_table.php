@@ -21,6 +21,7 @@ return new class extends Migration
 			$table->string('booking_status')->default('pending');
 			$table->string('payment_status')->default('pending');
 			$table->timestamps();
+			$table->softDeletes();
 		});
 	}
 

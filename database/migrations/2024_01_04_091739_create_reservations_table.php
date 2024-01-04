@@ -17,6 +17,7 @@ return new class extends Migration
 			$table->foreignUuid('customer_id')->references('id')->on('customers');
 			$table->string('status')->default('pending');
 			$table->timestamps();
+			$table->softDeletes();
 		});
 	}
 
