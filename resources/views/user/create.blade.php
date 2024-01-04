@@ -30,9 +30,48 @@
 
 						<div class="col-md-6 mb-3">
 							<div class="form-group">
+								<label for="username">Username</label>
+								<input class="form-control @error('username') is-invalid @enderror" id="username" name="username" type="text" placeholder="Username" value="{{ old('username') }}" required>
+								@error('username')
+									<div class="invalid-feedback">
+										{{ $message }}
+									</div>
+								@enderror
+							</div>
+						</div>
+
+						<div class="col-md-6 mb-3">
+							<div class="form-group">
+								<label for="role">User Role</label>
+								<select class="form-select @error('role') is-invalid @enderror" id="role" name="role" placeholder="Role" value="{{ old('role') }}" required>
+									<option value="Administrator">Administrator</option>
+									<option value="Guest">Guest</option>
+								</select>
+								@error('role')
+									<div class="invalid-feedback">
+										{{ $message }}
+									</div>
+								@enderror
+							</div>
+						</div>
+
+						<div class="col-md-6 mb-3">
+							<div class="form-group">
 								<label for="email">Email</label>
 								<input class="form-control @error('email') is-invalid @enderror" id="email" name="email" type="email" placeholder="Email" value="{{ old('email') }}" required>
 								@error('email')
+									<div class="invalid-feedback">
+										{{ $message }}
+									</div>
+								@enderror
+							</div>
+						</div>
+
+						<div class="col-md-6 mb-3">
+							<div class="form-group">
+								<label for="contact_number">Contact Number</label>
+								<input class="form-control @error('contact_number') is-invalid @enderror" id="contact_number" name="contact_number" type="number" value="{{ old('contact_number') }}" required>
+								@error('contact_number')
 									<div class="invalid-feedback">
 										{{ $message }}
 									</div>

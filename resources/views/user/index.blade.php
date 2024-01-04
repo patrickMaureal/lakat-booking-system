@@ -40,22 +40,24 @@
 		<table class="table table-hover">
 			<thead>
 				<tr>
-					<th class="border-gray-200">Name</th>
-					<th class="border-gray-200">Email</th>
-					<th class="border-gray-200">Date Added</th>
-					<th class="border-gray-200">Date Updated</th>
+					<th class="border-gray-200">No.</th>
+					<th class="border-gray-200">Account Name</th>
+					<th class="border-gray-200">Username</th>
+					<th class="border-gray-200">Role</th>
+					<th class="border-gray-200">Contact Number</th>
 					<th class="border-gray-200">Action</th>
 				</tr>
 			</thead>
 			<tbody>
 				@forelse ($users as $user)
 					<tr>
+						<td valign="middle"><span class="fw-normal">{{ $loop->iteration }}</span></td>
 						<td valign="middle">
 							<span class="fw-normal">{{ $user->name }}</span>
 						</td>
-						<td valign="middle"><span class="fw-normal">{{ $user->email }}</span></td>
-						<td valign="middle"><span class="fw-normal">{{ $user->created_at }}</span></td>
-						<td valign="middle"><span class="fw-normal">{{ $user->updated_at }}</span></td>
+						<td valign="middle"><span class="fw-normal">{{ $user->username }}</span></td>
+						<td valign="middle"><span class="fw-normal">{{ $user->role }}</span></td>
+						<td valign="middle"><span class="fw-normal">{{ $user->contact_number }}</span></td>
 						<td valign="middle">
 							<a href="{{ route('users.show', $user->id) }}" class="btn btn-sm btn-pill btn-outline-tertiary">Show</a>
 						</td>

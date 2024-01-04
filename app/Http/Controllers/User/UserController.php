@@ -26,7 +26,7 @@ class UserController extends Controller
 		// users
 		// paginate with query
 		$users = User::where('name', 'LIKE', '%'.$searchVal.'%')->whereNot('id', auth()->user()->id)->paginate(5)->withQueryString();
-		
+
 		return view('user.index', compact('users', 'searchVal'));
 	}
 
@@ -47,10 +47,13 @@ class UserController extends Controller
 		$validated = $request->validated();
 
 		// store new User to database
-		$user 							= new User;
-		$user->name 				= $validated['name'];
-		$user->email 				= $validated['email'];
-		$user->password 		= Hash::make($validated['password']);
+		$user 								= new User;
+		$user->name 					= $validated['name'];
+		$user->username    	 	= $validated['username'];
+		$user->role						= $validated['role'];
+		$user->email 					= $validated['email'];
+		$user->contact_number = $validated['contact_number'];
+		$user->password 			= Hash::make($validated['password']);
 		$user->save();
 
 		// redirect to users page
@@ -70,7 +73,7 @@ class UserController extends Controller
 	 */
 	public function edit(string $id)
 	{
-		// 
+		//
 	}
 
 	/**
@@ -82,8 +85,11 @@ class UserController extends Controller
 		$validated = $request->validated();
 
 		// update User
-		$user->name 				= $validated['name'];
-		$user->email 				= $validated['email'];
+		$user->name 					= $validated['name'];
+		$user->username    	 	= $validated['username'];
+		$user->role						= $validated['role'];
+		$user->email 					= $validated['email'];
+		$user->contact_number = $validated['contact_number'];
 
 		if ($request->has('password')) {
 			// dd($request->password);
