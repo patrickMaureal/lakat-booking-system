@@ -1,9 +1,6 @@
 <x-home-layout>
-	@include('homepage.featured-services')
 	@include('homepage.about')
-	@include('homepage.feature')
-	@include('homepage.services')
+	@include('homepage.accomodations')
 	@include('homepage.faq')
-	@include('homepage.testimonials')
 	@include('homepage.contact')
 </x-home-layout>
