@@ -66,8 +66,8 @@
 					<span class="sidebar-text">Customers</span>
 				</a>
 			</li>
-			<li class="nav-item {{ request()->routeIs('users.*') ? 'active' : '' }}">
-				<a href="{{ route('users.index') }}" class="nav-link">
+			<li class="nav-item {{ request()->routeIs('accomodations.*') ? 'active' : '' }}">
+				<a href="{{ route('accomodations.index') }}" class="nav-link">
 					<span class="sidebar-icon">
 						<i class="icon icon-xs me-2  bi bi-house-add"></i>
 					</span>

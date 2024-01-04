@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Accomodation\AccomodationController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Customer\CustomerController;
@@ -36,7 +37,13 @@ Route::middleware('auth')->group(function () {
 	// users
 	Route::resource('users', UserController::class);
 
+	// customers
 	Route::resource('customers', CustomerController::class);
+
+	// accomodation
+	Route::resource('accomodations', AccomodationController::class);
+
+
 
 });
 
