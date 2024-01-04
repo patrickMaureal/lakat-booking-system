@@ -12,7 +12,7 @@
 			<div class="card card-body border-0 shadow mb-4">
 				<h2 class="h5 mb-4">Customer information</h2>
 
-				<form method="POST" action="{{ route('customers.store') }}">
+				<form method="POST" action="{{ route('customers.update', $customer) }}">
 					@csrf
 
 					<div class="row">

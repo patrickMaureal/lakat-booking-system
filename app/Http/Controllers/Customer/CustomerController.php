@@ -27,6 +27,11 @@ class CustomerController extends Controller
 			->paginate(5)
 			->withQueryString();
 
+		// $customers = Customer::where('first_name', 'LIKE', '%' . $searchVal . '%')
+		// 	->orWhere('last_name', 'LIKE', '%' . $searchVal . '%')
+		// 	->paginate(5)
+		// 	->withQueryString();
+
 		return view('customer.index', compact('customers', 'searchVal'));
 	}
 
@@ -72,7 +77,7 @@ class CustomerController extends Controller
 	 */
 	public function edit(Customer $customer): View
 	{
-		return view('customer.edit',compact('customer'));
+		return view('customer.edit', compact('customer'));
 	}
 
 	/**
