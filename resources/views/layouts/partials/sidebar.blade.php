@@ -90,6 +90,14 @@
 					<span class="sidebar-text">Booking</span>
 				</a>
 			</li>
+			<li class="nav-item {{ request()->routeIs('reservations.*') ? 'active' : '' }}">
+				<a href="{{ route('reservations.index') }}" class="nav-link">
+					<span class="sidebar-icon">
+						<i class="icon icon-xs me-2  bi bi-journal-arrow-down"></i>
+					</span>
+					<span class="sidebar-text">Reservation</span>
+				</a>
+			</li>
 			<li role="separator" class="dropdown-divider mt-4 mb-3 border-gray-700"></li>
 			<li class="nav-item">
 				<a target="_blank" href="{{ url('/') }}" class="btn btn-secondary d-flex align-items-center justify-content-center btn-upgrade-pro">

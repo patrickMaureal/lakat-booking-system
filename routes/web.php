@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Booking\BookingController;
 use App\Http\Controllers\Customer\CustomerController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Reservation\ReservationController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -50,6 +51,9 @@ Route::middleware('auth')->group(function () {
 
 	//booking
 	Route::resource('bookings', BookingController::class);
+
+	// reservation
+	Route::resource('reservations', ReservationController::class);
 
 
 
