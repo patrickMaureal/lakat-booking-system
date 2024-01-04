@@ -47,7 +47,7 @@
 					<span class="sidebar-icon">
 						<img src="{{ asset('img/brand/light.svg') }}" height="20" width="20" alt="Volt Logo">
 					</span>
-					<span class="mt-1 ms-1 sidebar-text">CMS</span>
+					<span class="mt-1 ms-1 sidebar-text">LBS</span>
 				</a>
 			</li>
 			<li class="nav-item {{ request()->routeIs('dashboard') ? 'active' : '' }}">
@@ -55,7 +55,31 @@
 					<span class="sidebar-icon">
 						<i class="icon icon-xs me-2 bi bi-speedometer"></i>
 					</span>
-					<span class="sidebar-text">Dashboard</span>
+					<span class="sidebar-text">Home</span>
+				</a>
+			</li>
+			<li class="nav-item {{ request()->routeIs('users.*') ? 'active' : '' }}">
+				<a href="{{ route('users.index') }}" class="nav-link">
+					<span class="sidebar-icon">
+						<i class="icon icon-xs me-2  bi bi-house-add"></i>
+					</span>
+					<span class="sidebar-text">Accomodation</span>
+				</a>
+			</li>
+			<li class="nav-item {{ request()->routeIs('users.*') ? 'active' : '' }}">
+				<a href="{{ route('users.index') }}" class="nav-link">
+					<span class="sidebar-icon">
+						<i class="icon icon-xs me-2  bi bi-file-plus"></i>
+					</span>
+					<span class="sidebar-text">Reservation</span>
+				</a>
+			</li>
+			<li class="nav-item {{ request()->routeIs('users.*') ? 'active' : '' }}">
+				<a href="{{ route('users.index') }}" class="nav-link">
+					<span class="sidebar-icon">
+						<i class="icon icon-xs me-2  bi bi-cash"></i>
+					</span>
+					<span class="sidebar-text">Payment</span>
 				</a>
 			</li>
 			<li class="nav-item {{ request()->routeIs('users.*') ? 'active' : '' }}">
@@ -63,25 +87,16 @@
 					<span class="sidebar-icon">
 						<i class="icon icon-xs me-2  bi bi-person-bounding-box"></i>
 					</span>
-					<span class="sidebar-text">Users Management</span>
+					<span class="sidebar-text">Users</span>
 				</a>
 			</li>
 			<li role="separator" class="dropdown-divider mt-4 mb-3 border-gray-700"></li>
 			<li class="nav-item">
-				<a href="{{ url('/') }}" class="nav-link d-flex align-items-center">
-					<span class="sidebar-icon">
-						<i class="icon icon-xs me-2 bi bi-house"></i>
-					</span>
-					<span class="sidebar-text">Homepage</span>
-				</a>
-			</li>
-			<li class="nav-item">
-				<a target="_blank" href="#"
-					class="btn btn-secondary d-flex align-items-center justify-content-center btn-upgrade-pro">
+				<a target="_blank" href="{{ url('/') }}" class="btn btn-secondary d-flex align-items-center justify-content-center btn-upgrade-pro">
 					<span class="sidebar-icon d-inline-flex align-items-center justify-content-center">
 						<i class="icon icon-xs me-2 bi bi-globe"></i>
 					</span>
-					<span>Laravel Training</span>
+					<span>Homepage</span>
 				</a>
 			</li>
 		</ul>

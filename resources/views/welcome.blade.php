@@ -5,14 +5,14 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<title>Laravel</title>
+		<title>Lakat</title>
 
 		{{-- Volt CSS --}}
 		<link type="text/css" href="{{ asset('theme/volt.css') }}" rel="stylesheet">
 
 		{{-- Bootstrap icons --}}
 		<link type="text/css" href="{{ asset('vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
-		
+
 	</head>
 
 	<body>
@@ -36,7 +36,7 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-12 text-center">
-							<h1 class="fw-bolder">Contact Management System</h1>
+							<h1 class="fw-bolder">Lakat Booking System</h1>
 							<h2 class="lead fw-normal text-muted mb-5">Laravel Training</h2>
 							<div class="d-flex align-items-center justify-content-center mb-5">
 								<a href="#"
