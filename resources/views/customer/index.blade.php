@@ -58,7 +58,34 @@
 						<td valign="middle"><span class="fw-normal">{{ $customer->phone_number }}</span></td>
 						<td valign="middle">
 							<a href="{{ route('customers.edit', $customer->id) }}" class="btn btn-sm btn-pill btn-outline-tertiary">Edit</a>
-							<button type="button" class="btn btn-sm btn-pill btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modal-delete">Delete</button>
+								{{-- delete --}}
+							<button class="btn btn-sm btn-pill btn-outline-danger" type="button" data-bs-toggle="modal" data-bs-target="#modal-delete-{{ $customer->id }}">Delete</button>
+
+							{{-- modal --}}
+							<div class="modal fade" id="modal-delete-{{ $customer->id }}" tabindex="-1" role="dialog" aria-labelledby="modal-default" aria-hidden="true">
+								<div class="modal-dialog modal-dialog-centered" role="document">
+									<div class="modal-content">
+										<form action="{{ route('customers.destroy', $customer->id) }}" method="POST">
+
+											@csrf
+											@method('DELETE')
+
+											<div class="modal-header">
+												<h2 class="h6 modal-title">Confirmation</h2>
+												<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+											</div>
+											<div class="modal-body">
+												<p>Are you sure you want to delete this customer?</p>
+											</div>
+											<div class="modal-footer">
+												<button type="submit" class="btn btn-danger">Yes</button>
+												<button type="button" class="btn btn-link text-gray-600 ms-auto" data-bs-dismiss="modal">Close</button>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+							
 						</td>
 					</tr>
 				@empty
@@ -77,31 +104,6 @@
 
 		</div>
 
-	</div>
-
-	{{-- modal --}}
-	<div class="modal fade" id="modal-delete" tabindex="-1" role="dialog" aria-labelledby="modal-default" aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered" role="document">
-			<div class="modal-content">
-				<form action="{{ route('customers.destroy', $customer) }}" method="POST">
-
-					@csrf
-					@method('DELETE')
-
-					<div class="modal-header">
-						<h2 class="h6 modal-title">Confirmation</h2>
-						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-					</div>
-					<div class="modal-body">
-						<p>Are you sure you want to delete this customer?</p>
-					</div>
-					<div class="modal-footer">
-						<button type="submit" class="btn btn-danger">Yes</button>
-						<button type="button" class="btn btn-outline-tertiary ms-auto" data-bs-dismiss="modal">Close</button>
-					</div>
-				</form>
-			</div>
-		</div>
 	</div>
 
 </x-app-layout>
