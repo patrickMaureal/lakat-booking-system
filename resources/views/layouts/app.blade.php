@@ -18,17 +18,17 @@
 
 <body>
 
-	@include('layouts.partials.sidebar')
+	@include('layouts.partials.admin.sidebar')
 
 	<main class="content">
 
-		@include('layouts.partials.navbar')
+		@include('layouts.partials.admin.navbar')
 
 		{{-- page content --}}
 		{{ $slot }}
 
 		{{-- footer --}}
-		@include('layouts.partials.footer')
+		@include('layouts.partials.admin.footer')
 
 	</main>
 
