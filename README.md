@@ -1,4 +1,4 @@
-## About Contact Management System
+## About Lakat Booking System
 
 This boilerplate uses Laravel PHP Framework V10 and Volt Bootstrap Admin Template.
 
@@ -36,7 +36,7 @@ This boilerplate uses Laravel PHP Framework V10 and Volt Bootstrap Admin Templat
 ## How to Access using laragon
 
  - Reload laragon
- - Open chrome and type the project-folder name example: `http://contact-management-system.test`
+ - Open chrome and type the project-folder name example: `http://lakat-booking-system.test`
 
 ## Default Login Credential
 
