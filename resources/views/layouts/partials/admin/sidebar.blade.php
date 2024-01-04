@@ -1,8 +1,8 @@
 {{-- sidebar toggle --}}
 <nav class="navbar navbar-dark navbar-theme-primary px-4 col-12 d-lg-none">
 	<a class="navbar-brand me-lg-5" href="{{ route('dashboard') }}">
-		<img class="navbar-brand-dark" src="{{ asset('img/brand/light.svg') }}" alt="Volt logo" />
-		<img class="navbar-brand-light" src="{{ asset('img/brand/dark.svg') }}" alt="Volt logo" />
+		<img class="navbar-brand-dark" src="{{ asset('img/volt/brand/light.svg') }}" alt="Volt logo" />
+		<img class="navbar-brand-light" src="{{ asset('img/volt/brand/dark.svg') }}" alt="Volt logo" />
 	</a>
 	<div class="d-flex align-items-center">
 		<button class="navbar-toggler d-lg-none collapsed" type="button" data-bs-toggle="collapse"
@@ -18,7 +18,7 @@
 		<div class="user-card d-flex d-md-none align-items-center justify-content-between justify-content-md-center pb-4">
 			<div class="d-flex align-items-center">
 				<div class="avatar-lg me-4">
-					<img src="{{ asset('img/team/profile-picture-3.jpg') }}" class="card-img-top rounded-circle border-white"
+					<img src="{{ asset('img/volt/team/profile-picture-3.jpg') }}" class="card-img-top rounded-circle border-white"
 						alt="Bonnie Green">
 				</div>
 				<div class="d-block">
@@ -45,9 +45,9 @@
 			<li class="nav-item">
 				<a href="{{ route('dashboard') }}" class="nav-link d-flex align-items-center">
 					<span class="sidebar-icon">
-						<img src="{{ asset('img/brand/light.svg') }}" height="20" width="20" alt="Volt Logo">
+						<img src="{{ asset('img/volt/brand/light.svg') }}" height="20" width="20" alt="Volt Logo">
 					</span>
-					<span class="mt-1 ms-1 sidebar-text">LBS</span>
+					<span class="mt-1 ms-1 sidebar-text">Lakat Beach</span>
 				</a>
 			</li>
 			<li class="nav-item {{ request()->routeIs('dashboard') ? 'active' : '' }}">

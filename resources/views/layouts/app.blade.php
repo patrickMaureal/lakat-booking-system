@@ -6,10 +6,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 
-	<title>{{ config('app.name', 'Contact Management System') }}</title>
+	<title>{{ config('app.name', 'Lakat Beach Booking System') }}</title>
 
 	{{-- Volt CSS --}}
-	<link type="text/css" href="{{ asset('theme/volt.css') }}" rel="stylesheet">
+	<link type="text/css" href="{{ asset('theme/volt/volt.css') }}" rel="stylesheet">
 
 	{{-- Bootstrap icons --}}
 	<link type="text/css" href="{{ asset('vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
@@ -40,7 +40,7 @@
 	<script src="{{ asset('vendor/smooth-scroll/smooth-scroll.min.js') }}"></script>
 
 	{{-- Volt JS --}}
-	<script src="{{ asset('theme/volt.js') }}"></script>
+	<script src="{{ asset('theme/volt/volt.js') }}"></script>
 
 </body>
 

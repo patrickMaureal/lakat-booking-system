@@ -9,11 +9,11 @@
 		<title>{{ config('app.name', 'Laravel') }}</title>
 
 		{{-- Volt CSS --}}
-		<link type="text/css" href="{{ asset('theme/volt.css') }}" rel="stylesheet">
+		<link type="text/css" href="{{ asset('theme/volt/volt.css') }}" rel="stylesheet">
 
 		{{-- Bootstrap icons --}}
 		<link type="text/css" href="{{ asset('vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
-			
+
 	</head>
 
 	<body>
@@ -29,7 +29,7 @@
 							Back to homepage
 						</a>
 					</p>
-					<div class="row justify-content-center form-bg-image" data-background-lg="{{ asset('img/illustrations/signin.svg') }}">
+					<div class="row justify-content-center form-bg-image" data-background-lg="{{ asset('img/volt/illustrations/signin.svg') }}">
 						<div class="col-12 d-flex align-items-center justify-content-center">
 							<div class="bg-white shadow border-0 rounded border-light p-4 p-lg-5 w-100 fmxw-500">
 								{{ $slot }}
@@ -40,7 +40,7 @@
 			</section>
 
 		</main>
-		
+
 		{{-- Core --}}
 		<script src="{{ asset('vendor/@popperjs/popper.min.js') }}"></script>
 		<script src="{{ asset('vendor/bootstrap/bootstrap.min.js') }}"></script>
@@ -49,7 +49,7 @@
 		<script src="{{ asset('vendor/smooth-scroll/smooth-scroll.min.js') }}"></script>
 
 		{{-- Volt JS --}}
-		<script src="{{ asset('theme/volt.js') }}"></script>
+		<script src="{{ asset('theme/volt/volt.js') }}"></script>
 
 	</body>
 
