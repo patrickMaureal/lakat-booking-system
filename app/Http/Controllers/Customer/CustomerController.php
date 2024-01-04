@@ -89,7 +89,6 @@ class CustomerController extends Controller
 		$validated = $request->validated();
 
 		// store new User to database
-		$customer 																= new Customer;
 		$customer->first_name 										= $validated['first_name'];
 		$customer->last_name 											= $validated['last_name'];
 		$customer->email 													= $validated['email'];

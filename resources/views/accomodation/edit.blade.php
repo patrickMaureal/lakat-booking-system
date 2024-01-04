@@ -13,7 +13,10 @@
 				<h2 class="h5 mb-4">Accomodation information</h2>
 
 				<form method="POST" action="{{ route('accomodations.update', $accomodation) }}">
+
 					@csrf
+
+					@method('PUT')
 
 					<div class="row">
 						<div class="col-md-6 mb-3">

@@ -75,7 +75,6 @@ class AccomodationController extends Controller
 	{
 		$validated = $request->validated();
 
-		$accomodation 										= new Accomodation;
 		$accomodation->name 							= $validated['name'];
 		$accomodation->description 				= $validated['description'];
 		$accomodation->min_capacity 			= $validated['min_capacity'];
