@@ -30,10 +30,18 @@
 						</div><!-- End Info Item -->
 
 						<div class="info-item d-flex">
+							<i class="bi bi-person flex-shrink-0"></i>
+							<div>
+								<h4>Name:</h4>
+								<p>Allan Saballa</p>
+							</div>
+						</div><!-- End Info Item -->
+
+						<div class="info-item d-flex">
 							<i class="bi bi-envelope flex-shrink-0"></i>
 							<div>
 								<h4>Email:</h4>
-								<p>info@example.com</p>
+								<p>allansaballa@gmail.com</p>
 							</div>
 						</div><!-- End Info Item -->
 
@@ -41,7 +49,7 @@
 							<i class="bi bi-phone flex-shrink-0"></i>
 							<div>
 								<h4>Call:</h4>
-								<p>+1 5589 55488 55</p>
+								<p>+63 917 637 4872</p>
 							</div>
 						</div><!-- End Info Item -->
 
