@@ -22,15 +22,7 @@ class UserController extends Controller
 	 */
 	public function index(Request $request): View
 	{
-
-		// search input
-		$searchVal = $request->search ?? null;
-
-		// users
-		// paginate with query
-		$users = User::where('name', 'LIKE', '%' . $searchVal . '%')->whereNot('id', auth()->user()->id)->paginate(5)->withQueryString();
-
-		return view('user.index', compact('users', 'searchVal'));
+		return view('user.index');
 	}
 
 	public function showTable(Request $request)
