@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Livewire\Booking\Wizard\BookingWizardComponent;
 use App\Livewire\Booking\Wizard\Steps\AccomodationSelection;
+use App\Livewire\Booking\Wizard\Steps\ContactInformation;
 use App\Livewire\Booking\Wizard\Steps\Schedule;
 use Illuminate\Support\ServiceProvider;
 use Livewire\Livewire;
@@ -23,7 +24,7 @@ class AppServiceProvider extends ServiceProvider
 
 		Livewire::component('schedule-selection-step', Schedule::class);
 		Livewire::component('accomodation-selection-step', AccomodationSelection::class);
-
+		Livewire::component('contact-information-step', ContactInformation::class);
 	}
 
 	/**
