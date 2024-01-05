@@ -9,7 +9,8 @@ use App\Models\Accomodation\Accomodation;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
-
+use Symfony\Component\HttpFoundation\Response;
+use Yajra\DataTables\Facades\DataTables;
 use function Ramsey\Uuid\v1;
 
 class AccomodationController extends Controller
@@ -19,11 +20,20 @@ class AccomodationController extends Controller
 	 */
 	public function index(Request $request): View
 	{
-		$searchVal = $request->search ?? null;
+		return view('accomodation.index');
+	}
 
-		$accomodations = Accomodation::where('name', 'LIKE', '%'.$searchVal.'%')->paginate(5)->withQueryString();
+	public function showTable(Request $request)
+	{
+		if ($request->ajax()) {
 
-		return view('accomodation.index', compact('accomodations', 'searchVal'));
+			$accomodations = Accomodation::select('id', 'name', 'min_capacity', 'max_capacity', 'price');
+
+			return DataTables::of($accomodations)
+				->addColumn('action', 'accomodation.table-buttons')
+				->rawColumns(['action'])
+				->toJson();
+		}
 	}
 
 	/**
@@ -49,7 +59,8 @@ class AccomodationController extends Controller
 		$accomodation->price 							= $validated['price'];
 		$accomodation->save();
 
-		return redirect()->route('accomodations.index')->with('status', 'Accomodation has been successfully added.');
+		toast('Accomodation has been successfully added.', 'success');
+		return redirect()->route('accomodations.index');
 	}
 
 	/**
@@ -82,18 +93,22 @@ class AccomodationController extends Controller
 		$accomodation->price 							= $validated['price'];
 		$accomodation->save();
 
-		return redirect()->route('accomodations.index')->with('status', 'Accomodation has been successfully added.');
+		toast('Accomodation has been successfully updated.', 'success');
+		return redirect()->route('accomodations.index');
 	}
 
 	/**
 	 * Remove the specified resource from storage.
 	 */
-	public function destroy(Accomodation $accomodation): RedirectResponse
+	public function destroy(Request $request,Accomodation $accomodation)
 	{
-		// delete Accomodation
-		$accomodation->delete();
+		if($request->ajax()) {
+			$accomodation->delete();
 
-		// redirect to accomodation page
-		return redirect()->route('accomodations.index')->with('status', 'Accomodation has been successfully deleted.');
+			return response()->json([
+				'success'  => true,
+				'message'  => 'Accomodation has been successfully deleted.'
+			], Response::HTTP_OK);
+		}
 	}
 }
