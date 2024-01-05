@@ -137,19 +137,6 @@
 				</form>
 
 			</div>
-
-			{{-- Delete User --}}
-			<div class="card card-body border-0 shadow mb-4">
-				<h2 class="h5 mb-4">Delete User</h2>
-
-				<div class="row">
-					<div class="col-md-3">
-						<button class="btn btn-danger mt-2 animate-up-2" type="button" data-bs-toggle="modal" data-bs-target="#modal-delete">Delete</button>
-					</div>
-				</div>
-
-			</div>
-
 		</div>
 	</div>
 </x-app-layout>

@@ -37,6 +37,9 @@ Route::middleware('auth')->group(function () {
 	Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
 	// users
+	Route::prefix('users')->name('users.')->group(function () {
+		Route::get('table', [UserController::class, 'showTable'])->name('table');
+	});
 	Route::resource('users', UserController::class);
 
 	// customers
