@@ -58,14 +58,6 @@
 					<span class="sidebar-text">Home</span>
 				</a>
 			</li>
-			<li class="nav-item {{ request()->routeIs('customers.*') ? 'active' : '' }}">
-				<a href="{{ route('customers.index') }}" class="nav-link">
-					<span class="sidebar-icon">
-						<i class="icon icon-xs me-2  bi bi-person-bounding-box"></i>
-					</span>
-					<span class="sidebar-text">Customers</span>
-				</a>
-			</li>
 			<li class="nav-item {{ request()->routeIs('accomodations.*') ? 'active' : '' }}">
 				<a href="{{ route('accomodations.index') }}" class="nav-link">
 					<span class="sidebar-icon">

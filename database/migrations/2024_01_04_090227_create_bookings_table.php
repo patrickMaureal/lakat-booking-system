@@ -13,7 +13,7 @@ return new class extends Migration
 	{
 		Schema::create('bookings', function (Blueprint $table) {
 			$table->uuid('id')->primary();
-			$table->foreignUuid('customer_id')->references('id')->on('customers')->onDelete('cascade');
+			$table->foreignUuid('accomodation_id')->references('id')->on('accomodations')->onDelete('cascade');
 			$table->string('code')->index();
 			$table->bigInteger('code_counter')->index();
 			$table->date('checkin_date')->nullable()->index();

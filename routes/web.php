@@ -44,13 +44,6 @@ Route::middleware('auth')->group(function () {
 		Route::get('table', [UserController::class, 'showTable'])->name('table');
 	});
 	Route::resource('users', UserController::class);
-
-	// customers
-	Route::prefix('customers')->name('customers.')->group(function () {
-		Route::get('table', [CustomerController::class, 'showTable'])->name('table');
-	});
-	Route::resource('customers', CustomerController::class);
-
 	// accomodation
 	Route::prefix('accomodations')->name('accomodations.')->group(function () {
 		Route::get('table', [AccomodationController::class, 'showTable'])->name('table');
