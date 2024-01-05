@@ -20,7 +20,7 @@
 									</span>
 									<input class="form-control datepicker-input id="from_date"
 										type="date" placeholder="yyyy-mm-dd" name="from_date"
-										wire:model.live="from_date" min="{{ $min_date }}" max="{{ $checkout_date }}" required>
+										wire:model.live="checkin_date" min="{{ $min_date }}" max="{{ $checkout_date }}" required>
 								</div>
 							</div>
 
@@ -32,7 +32,7 @@
 									</span>
 									<input class="form-control datepicker-input id="to_date"
 										type="date" placeholder="yyyy-mm-dd" name="to_date"
-										wire:model.live="to_date" min="{{ $checkin_date }}" max="{{ $max_date }}" required>
+										wire:model.live="checkout_date" min="{{ $checkin_date }}" max="{{ $max_date }}" required>
 								</div>
 							</div>
 
