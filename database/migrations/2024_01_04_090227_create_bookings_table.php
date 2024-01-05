@@ -14,11 +14,12 @@ return new class extends Migration
 		Schema::create('bookings', function (Blueprint $table) {
 			$table->uuid('id')->primary();
 			$table->foreignUuid('customer_id')->references('id')->on('customers')->onDelete('cascade');
-			$table->date('booking_date');
-			$table->date('checkin_date');
-			$table->date('checkout_date');
-			$table->string('booking_status')->default('pending');
-			$table->string('payment_status')->default('pending');
+			$table->string('code')->index();
+			$table->bigInteger('code_counter')->index();
+			$table->date('checkin_date')->nullable()->index();
+			$table->date('checkout_date')->nullable()->index();
+			$table->string('booking_status')->default('Pending');
+			$table->string('payment_status')->default('Unpaid');
 			$table->timestamps();
 			$table->softDeletes();
 		});

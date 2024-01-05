@@ -55,6 +55,9 @@ Route::middleware('auth')->group(function () {
 	Route::resource('accomodations', AccomodationController::class);
 
 	//booking
+	Route::prefix('bookings')->name('bookings.')->group(function () {
+		Route::get('table', [BookingController::class, 'showTable'])->name('table');
+	});
 	Route::resource('bookings', BookingController::class);
 
 	//payments

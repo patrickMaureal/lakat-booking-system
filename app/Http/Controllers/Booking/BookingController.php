@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Booking\Booking;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Yajra\DataTables\Facades\DataTables;
 
 class BookingController extends Controller
 {
@@ -17,6 +18,23 @@ class BookingController extends Controller
 		return view('booking.index');
 	}
 
+	public function showTable(Request $request)
+	{
+		if ($request->ajax()) {
+
+			$customers = Booking::select('id','code','created_at','checkin_date','checkout_date','booking_status','payment_status');
+
+			return DataTables::of($customers)
+				->editColumn('created_at', function ($row) {
+					return $row->created_at->format('F jS \of Y'); // human readable format
+				})
+				->addColumn('action', function ($row) {
+					return view('booking.table-buttons', compact('row'));
+				})
+				->rawColumns(['action'])
+				->toJson();
+		}
+	}
 	/**
 	 * Show the form for creating a new resource.
 	 */
