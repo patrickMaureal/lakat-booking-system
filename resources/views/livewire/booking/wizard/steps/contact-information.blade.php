@@ -15,7 +15,7 @@
 									<div class="col-md-6 mb-3">
 										<div class="form-group">
 											<label for="name">First Name</label>
-											<input class="form-control @error('first_name') is-invalid @enderror" id="first_name" name="first_name" type="text" placeholder="First Name" value="{{ old('first_name') }}" required>
+											<input class="form-control @error('first_name') is-invalid @enderror" id="first_name" type="text" placeholder="First Name" wire:model="first_name" required>
 											@error('first_name')
 												<div class="invalid-feedback">
 													{{ $message }}
@@ -26,7 +26,7 @@
 									<div class="col-md-6 mb-3">
 										<div class="form-group">
 											<label for="name">Last Name</label>
-											<input class="form-control @error('last_name') is-invalid @enderror" id="last_name" name="last_name" type="text" placeholder="Last Name" value="{{ old('last_name') }}" required>
+											<input class="form-control @error('last_name') is-invalid @enderror" id="last_name" type="text" placeholder="Last Name" wire:model="last_name" required>
 											@error('last_name')
 												<div class="invalid-feedback">
 													{{ $message }}
@@ -38,7 +38,7 @@
 									<div class="col-md-6 mb-3">
 										<div class="form-group">
 											<label for="email">Email</label>
-											<input class="form-control @error('email') is-invalid @enderror" id="email" name="email" type="email" placeholder="Email" value="{{ old('email') }}" required>
+											<input class="form-control @error('email') is-invalid @enderror" id="email" type="email" placeholder="Email" wire:model="email" required>
 											@error('email')
 												<div class="invalid-feedback">
 													{{ $message }}
@@ -50,7 +50,7 @@
 									<div class="col-md-6 mb-3">
 										<div class="form-group">
 											<label for="phone_number">Phone Number</label>
-											<input class="form-control @error('phone_number') is-invalid @enderror" id="phone_number" name="phone_number" type="number" placeholder="Phone Number" value="{{ old('phone_number') }}" required>
+											<input class="form-control @error('phone_number') is-invalid @enderror" id="phone_number" type="number" placeholder="Phone Number" wire:model="phone_number" required>
 											@error('phone_number')
 												<div class="invalid-feedback">
 													{{ $message }}
