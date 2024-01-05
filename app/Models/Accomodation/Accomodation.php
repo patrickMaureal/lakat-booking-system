@@ -19,6 +19,7 @@ class Accomodation extends Model implements HasMedia
 		'max_capacity',
 		'availability',
 		'total_occupied',
+		'availability',
 		'price',
 	];
 }

@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Accomodation\StoreAccomodationRequest;
 use App\Http\Requests\Accomodation\UpdateAccomodationRequest;
 use App\Models\Accomodation\Accomodation;
+use App\Models\Media\Media;
+use App\Services\MediaAttachmentService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -27,9 +29,12 @@ class AccomodationController extends Controller
 	{
 		if ($request->ajax()) {
 
-			$accomodations = Accomodation::select('id', 'name', 'min_capacity', 'max_capacity', 'price');
+			$accomodations = Accomodation::select('id', 'name','availability','total_occupied', 'price');
 
 			return DataTables::of($accomodations)
+				->addColumn('availability', function ($accomodation) {
+            return $accomodation->availability === 'yes' ? 0 : 1;
+        })
 				->addColumn('action', 'accomodation.table-buttons')
 				->rawColumns(['action'])
 				->toJson();
@@ -47,17 +52,19 @@ class AccomodationController extends Controller
 	/**
 	 * Store a newly created resource in storage.
 	 */
-	public function store(StoreAccomodationRequest $request):RedirectResponse
+	public function store(StoreAccomodationRequest $request,MediaAttachmentService $accomodationAttachment):RedirectResponse
 	{
 		$validated = $request->validated();
 
-		$accomodation 										= new Accomodation;
-		$accomodation->name 							= $validated['name'];
-		$accomodation->description 				= $validated['description'];
-		$accomodation->min_capacity 			= $validated['min_capacity'];
-		$accomodation->max_capacity 			= $validated['max_capacity'];
-		$accomodation->price 							= $validated['price'];
+		$accomodation 											= new Accomodation;
+		$accomodation->name 								= $validated['name'];
+		$accomodation->min_capacity 				= $validated['min_capacity'];
+		$accomodation->max_capacity 				= $validated['max_capacity'];
+		$accomodation->total_occupied 			= $validated['total_occupied'];
+		$accomodation->price 								= $validated['price'];
 		$accomodation->save();
+
+		$accomodationAttachment->uploadSingle($accomodation, $validated['cover_photo'], 'cover_photos');
 
 		toast('Accomodation has been successfully added.', 'success');
 		return redirect()->route('accomodations.index');
@@ -76,25 +83,31 @@ class AccomodationController extends Controller
 	 */
 	public function edit(Accomodation $accomodation)
 	{
+		$accomodation->load('media');
 		return view('accomodation.edit', compact('accomodation'));
 	}
 
 	/**
 	 * Update the specified resource in storage.
 	 */
-	public function update(UpdateAccomodationRequest $request, Accomodation $accomodation): RedirectResponse
+	public function update(UpdateAccomodationRequest $request, Accomodation $accomodation, MediaAttachmentService $accomodationAttachment)
 	{
 		$validated = $request->validated();
 
-		$accomodation->name 							= $validated['name'];
-		$accomodation->description 				= $validated['description'];
-		$accomodation->min_capacity 			= $validated['min_capacity'];
-		$accomodation->max_capacity 			= $validated['max_capacity'];
-		$accomodation->price 							= $validated['price'];
+		$accomodation->name 								= $validated['name'];
+		$accomodation->min_capacity 				= $validated['min_capacity'];
+		$accomodation->max_capacity 				= $validated['max_capacity'];
+		$accomodation->total_occupied 			= $validated['total_occupied'];
+		$accomodation->availability 				= $validated['availability'];
+		$accomodation->price 								= $validated['price'];
 		$accomodation->save();
 
+		if (isset($validated['cover_photo'])) {
+			$accomodationAttachment->uploadSingle($accomodation, $validated['cover_photo'], 'cover_photos');
+		}
+
 		toast('Accomodation has been successfully updated.', 'success');
-		return redirect()->route('accomodations.index');
+		return back();
 	}
 
 	/**
@@ -108,6 +121,18 @@ class AccomodationController extends Controller
 			return response()->json([
 				'success'  => true,
 				'message'  => 'Accomodation has been successfully deleted.'
+			], Response::HTTP_OK);
+		}
+	}
+
+	public function destroyAttachment(Request $request, $media)
+	{
+		if ($request->ajax()) {
+
+			Media::where('uuid', $media)->delete();
+			return response()->json([
+				'success' => true,
+				'message' => 'Data has been successfully deleted.'
 			], Response::HTTP_OK);
 		}
 	}

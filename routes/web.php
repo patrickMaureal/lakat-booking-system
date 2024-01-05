@@ -47,6 +47,7 @@ Route::middleware('auth')->group(function () {
 	// accomodation
 	Route::prefix('accomodations')->name('accomodations.')->group(function () {
 		Route::get('table', [AccomodationController::class, 'showTable'])->name('table');
+		Route::delete('destroy-attachment/{media}', [AccomodationController::class, 'destroyAttachment'])->name('destroy-attachment');
 	});
 	Route::resource('accomodations', AccomodationController::class);
 

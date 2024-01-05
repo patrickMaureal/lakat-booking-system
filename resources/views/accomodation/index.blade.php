@@ -1,5 +1,5 @@
 <x-app-layout>
-	
+
 	<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
 		<div class="d-block mb-md-0">
 			<h2 class="h4">Accomodation</h2>
@@ -42,8 +42,8 @@
 				<thead>
 					<tr>
 						<th >Accomodation</th>
-						<th >Min</th>
-						<th >Max</th>
+						<th >Availability</th>
+						<th >Total Occupancy</th>
 						<th >Price</th>
 						<th >Action</th>
 					</tr>

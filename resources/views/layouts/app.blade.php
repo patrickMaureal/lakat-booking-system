@@ -21,6 +21,9 @@
 	{{-- bootstrap-select --}}
 	<link type="text/css" rel="stylesheet" href="{{ asset('vendor/bootstrap-select/bootstrap-select.min.css') }}">
 
+	{{-- glightbox --}}
+	<link type="text/css" rel="stylesheet" href="{{ asset('vendor/glightbox/css/glightbox.min.css') }}">
+
 	@stack('styles')
 
 </head>
@@ -62,6 +65,9 @@
 	{{-- sweetalert --}}
 	<script type="text/javascript" src="{{ asset('vendor/sweetalert/sweetalert.all.js') }}"></script>
 	@include('sweetalert::alert')
+
+	{{-- glightbox --}}
+  <script type="text/javascript" src="{{ asset('vendor/glightbox/js/glightbox.min.js') }}"></script>
 
 	{{-- bootstrap-select --}}
   <script type="text/javascript" src="{{ asset('vendor/bootstrap-select/bootstrap-select.min.js') }}"></script>

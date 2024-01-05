@@ -27,8 +27,8 @@ $(function () {
 		},
 		columns: [
 			{ data: "name", name: "name" },
-			{ data: "min_capacity", name: "min_capacity" },
-			{ data: "max_capacity", name: "max_capacity" },
+			{ data: "availability", name: "availability" },
+			{ data: "total_occupied", name: "total_occupied" },
 			{ data: "price", name: "price" },
 			{
 				data: "action",

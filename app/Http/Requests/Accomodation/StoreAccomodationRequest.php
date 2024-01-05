@@ -22,11 +22,12 @@ class StoreAccomodationRequest extends FormRequest
 	public function rules(): array
 	{
 		return [
-			'name' => ['required', 'string'],
-			'description' => ['required', 'string'],
-			'min_capacity' => ['required', 'numeric'],
-			'max_capacity' => ['required', 'numeric'],
-			'price' => ['required', 'numeric'],
+			'name' 							=> ['required', 'string'],
+			'min_capacity' 			=> ['required', 'numeric'],
+			'max_capacity' 			=> ['required', 'numeric'],
+			'total_occupied' 		=> ['required', 'numeric'],
+			'price' 						=> ['required', 'numeric'],
+			'cover_photo'       => ['required', 'image'],
 		];
 	}
 }
