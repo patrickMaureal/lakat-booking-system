@@ -14,9 +14,10 @@ return new class extends Migration
 		Schema::create('accomodations', function (Blueprint $table) {
 			$table->uuid('id')->primary();
 			$table->string('name');
-			$table->string('description');
 			$table->bigInteger('min_capacity');
 			$table->bigInteger('max_capacity');
+			$table->boolean('availability')->default(true);
+			$table->bigInteger('total_occupied')->default(0);
 			$table->decimal('price', 8, 2);
 			$table->timestamps();
 			$table->softDeletes();
