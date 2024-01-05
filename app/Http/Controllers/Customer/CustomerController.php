@@ -5,36 +5,39 @@ namespace App\Http\Controllers\Customer;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Customer\StoreCustomerRequest;
 use App\Http\Requests\Customer\UpdateCustomerRequest;
-use App\Models\Customer\Customer;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Symfony\Component\HttpFoundation\Response;
+use Yajra\DataTables\Facades\DataTables;
+
+use App\Models\Customer\Customer;
 
 class CustomerController extends Controller
 {
 	/**
 	 * Display a listing of the resource.
 	 */
-	public function index(Request $request): View
+	public function index(): View
 	{
-		$searchVal = $request->search ?? null;
-
-		$customers = Customer::select('*')
-			->where(function ($query) use ($searchVal) {
-				$query->where('first_name', 'LIKE', '%' . $searchVal . '%')
-					->orWhere('last_name', 'LIKE', '%' . $searchVal . '%');
-			})
-			->paginate(5)
-			->withQueryString();
-
-		// $customers = Customer::where('first_name', 'LIKE', '%' . $searchVal . '%')
-		// 	->orWhere('last_name', 'LIKE', '%' . $searchVal . '%')
-		// 	->paginate(5)
-		// 	->withQueryString();
-
-		return view('customer.index', compact('customers', 'searchVal'));
+		return view('customer.index');
 	}
 
+	public function showTable(Request $request)
+	{
+		if ($request->ajax()) {
+
+			$customers = Customer::select('id', 'first_name', 'last_name', 'email', 'phone_number');
+
+			return DataTables::of($customers)
+				->addColumn('full_name', function ($customer) {
+					return $customer->first_name . ' ' . $customer->last_name;
+				})
+				->addColumn('action', 'customer.table-buttons')
+				->rawColumns(['action'])
+				->toJson();
+		}
+	}
 	/**
 	 * Show the form for creating a new resource.
 	 */
@@ -60,8 +63,8 @@ class CustomerController extends Controller
 		$customer->address 												= $validated['address'];
 		$customer->save();
 
-		// redirect to users page
-		return redirect()->route('customers.index')->with('status', 'Customer has been successfully added.');
+		toast('Customer has been successfully added.', 'success');
+		return redirect()->route('customers.index');
 	}
 
 	/**
@@ -97,18 +100,23 @@ class CustomerController extends Controller
 		$customer->save();
 
 		// redirect to users page
-		return redirect()->route('customers.index')->with('status', 'Customer has been successfully added.');
+		toast('Customer has been successfully updated.', 'success');
+		return redirect()->route('customers.index');
 	}
 
 	/**
 	 * Remove the specified resource from storage.
 	 */
-	public function destroy(Customer $customer): RedirectResponse
+	public function destroy(Request $request, Customer $customer)
 	{
-		// delete User
-		$customer->delete();
+		if ($request->ajax()) {
 
-		// redirect to users page
-		return redirect()->route('customers.index')->with('status', 'Customer has been successfully deleted.');
+			$customer->delete();
+
+			return response()->json([
+				'success'  => true,
+				'message'  => 'Customer has been successfully deleted.'
+			], Response::HTTP_OK);
+		}
 	}
 }

@@ -43,6 +43,9 @@ Route::middleware('auth')->group(function () {
 	Route::resource('users', UserController::class);
 
 	// customers
+	Route::prefix('customers')->name('customers.')->group(function () {
+		Route::get('table', [CustomerController::class, 'showTable'])->name('table');
+	});
 	Route::resource('customers', CustomerController::class);
 
 	// accomodation
