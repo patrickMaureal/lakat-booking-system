@@ -14,7 +14,6 @@ return new class extends Migration
 		Schema::create('bookings', function (Blueprint $table) {
 			$table->uuid('id')->primary();
 			$table->foreignUuid('customer_id')->references('id')->on('customers')->onDelete('cascade');
-			$table->foreignUuid('activity_id')->references('id')->on('activities')->onDelete('cascade');
 			$table->date('booking_date');
 			$table->date('checkin_date');
 			$table->date('checkout_date');
