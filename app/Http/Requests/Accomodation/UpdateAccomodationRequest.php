@@ -22,7 +22,7 @@ class UpdateAccomodationRequest extends FormRequest
 	public function rules(): array
 	{
 		return [
-			'availability' 			=> ['required', 'boolean'],
+			'availability' 			=> ['required', 'string'],
 			'name' 							=> ['required', 'string'],
 			'min_capacity' 			=> ['required', 'numeric'],
 			'max_capacity' 			=> ['required', 'numeric'],

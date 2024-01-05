@@ -20,16 +20,22 @@
 
 					<div class="row">
 
-						<div class="col-md-6 mb-3">
+						<div class="col-md-12 mb-3">
 							<div class="form-group">
 								<label for="availability">Availability
-									<x-asterisks />
 								</label>
-								<select class="form-control form-select selectpicker @error('availability') is-invalid @enderror" id="availability" name="availability"
-                  type="text" aria-label="availability" data-live-search="true" title="Choose availability" required>
-                  <option value="0" {{ $accomodation->availability ? 'selected' : '' }}>Yes</option>
-									<option value="1" {{ !$accomodation->availability ? 'selected' : '' }}>No</option>
-                </select>
+								<div class="form-check">
+									<input class="form-check-input" type="radio" name="availability" id="availability1" value="Yes" {{ old('availability',$accomodation->availability) == 'Yes' ? 'checked' : '' }}>
+									<label class="form-check-label" for="availability1">
+										Yes
+									</label>
+								</div>
+								<div class="form-check">
+									<input class="form-check-input" type="radio" name="availability" id="availability2" value="No" {{ old('availability',$accomodation->availability) == 'No' ? 'checked' : '' }}>
+									<label class="form-check-label" for="availability2">
+										No
+									</label>
+								</div>
                 @error('availability')
                 <x-input-error message="{{ $message }}" />
                 @enderror
@@ -74,7 +80,6 @@
 						<div class="col-md-6 mb-3">
 							<div class="form-group">
 								<label for="total_occupied">Total Occupancy
-									<x-asterisks />
 								</label>
 								<input class="form-control @error('total_occupied') is-invalid @enderror" id="total_occupied" name="total_occupied" type="number" placeholder="0" value="{{ old('total_occupied', $accomodation->total_occupied) }}" required>
 								@error('total_occupied')
@@ -100,7 +105,6 @@
 							<div class="col-md-12">
 								<div class="form-group">
 									<label for="file">Upload cover photo:
-										<x-asterisks />
 									</label>
 									<input class="form-control  @error('cover_photo') is-invalid @enderror" id="cover_photo"
 										name="cover_photo" type="file" placeholder="Cover Photo">

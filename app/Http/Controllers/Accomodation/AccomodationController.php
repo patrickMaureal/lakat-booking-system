@@ -32,9 +32,6 @@ class AccomodationController extends Controller
 			$accomodations = Accomodation::select('id', 'name','availability','total_occupied', 'price');
 
 			return DataTables::of($accomodations)
-				->addColumn('availability', function ($accomodation) {
-            return $accomodation->availability === 'yes' ? 0 : 1;
-        })
 				->addColumn('action', 'accomodation.table-buttons')
 				->rawColumns(['action'])
 				->toJson();
@@ -107,7 +104,7 @@ class AccomodationController extends Controller
 		}
 
 		toast('Accomodation has been successfully updated.', 'success');
-		return back();
+		return redirect()->route('accomodations.index');
 	}
 
 	/**

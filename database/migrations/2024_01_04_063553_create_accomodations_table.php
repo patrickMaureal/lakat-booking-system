@@ -16,7 +16,7 @@ return new class extends Migration
 			$table->string('name');
 			$table->bigInteger('min_capacity');
 			$table->bigInteger('max_capacity');
-			$table->boolean('availability')->default(true);
+			$table->string('availability')->default('Yes');
 			$table->bigInteger('total_occupied')->default(0);
 			$table->decimal('price', 8, 2);
 			$table->timestamps();
