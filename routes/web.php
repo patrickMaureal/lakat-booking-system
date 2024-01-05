@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Booking\BookingController;
 use App\Http\Controllers\Customer\CustomerController;
+use App\Http\Controllers\Home\BookingController as HomeBookingController;
 use App\Http\Controllers\Payment\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\User\UserController;
@@ -24,6 +25,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
 	return view('welcome');
 });
+
+Route::get('/booking',[HomeBookingController::class,'index' ])->name('booking.index');
 
 Route::get('/dashboard', function () {
 	return view('dashboard');

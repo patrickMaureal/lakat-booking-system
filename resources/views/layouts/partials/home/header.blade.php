@@ -21,7 +21,7 @@
         <i class="bi bi-list mobile-nav-toggle d-none"></i>
       </nav><!-- .navbar -->
 
-      <a class="btn-getstarted scrollto" href="#about">Book Now</a>
+      <a class="btn-getstarted scrollto" href="{{ route('booking.index') }}">Book Now</a>
 
     </div>
   </header>
