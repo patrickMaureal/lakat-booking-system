@@ -2,10 +2,12 @@
 
 namespace App\Models\Payment;
 
+use App\Models\Booking\Booking;
 use App\Services\Payment\PaymentCodeService;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Payment extends Model
@@ -33,5 +35,10 @@ class Payment extends Model
 			$model->code					= $data['code'];
 			$model->code_counter	= $data['code_counter'];
 		});
+	}
+
+	public function booking(): BelongsTo
+	{
+		return $this->belongsTo(Booking::class);
 	}
 }
