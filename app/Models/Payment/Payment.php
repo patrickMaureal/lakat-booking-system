@@ -2,6 +2,7 @@
 
 namespace App\Models\Payment;
 
+use App\Services\Payment\PaymentCodeService;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -12,9 +13,25 @@ class Payment extends Model
   use HasFactory, HasUuids, SoftDeletes;
 
 	protected $fillable = [
-		'amount',
+		'code',
+		'code_counter',
+		'booking_id',
 		'payment_mode',
 		'reference_number',
-		'status'
+		'amount',
 	];
+
+	protected static function booted(): void
+	{
+		static::creating( function(Model $model) {
+
+			$paymentCodeService = new PaymentCodeService;
+
+			// generate Payment Code
+			$data = $paymentCodeService->generate();
+
+			$model->code					= $data['code'];
+			$model->code_counter	= $data['code_counter'];
+		});
+	}
 }

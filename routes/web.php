@@ -61,6 +61,9 @@ Route::middleware('auth')->group(function () {
 	Route::resource('bookings', BookingController::class);
 
 	//payments
+	Route::prefix('payments')->name('payments.')->group(function () {
+		Route::get('table', [PaymentController::class, 'showTable'])->name('table');
+	});
 	Route::resource('payments', PaymentController::class);
 
 

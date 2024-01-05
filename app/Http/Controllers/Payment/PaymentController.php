@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Payment;
 
 use App\Http\Controllers\Controller;
+use App\Models\Payment\Payment;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Yajra\DataTables\Facades\DataTables;
 
 class PaymentController extends Controller
 {
@@ -16,6 +18,22 @@ class PaymentController extends Controller
 		return view('payment.index');
 	}
 
+	public function showTable(Request $request)
+	{
+		if ($request->ajax()) {
+
+			$payments = Payment::join('bookings', 'payments.booking_id', '=', 'bookings.id')
+				->select('payments.id', 'payments.code as payment_code', 'bookings.code as code', 'amount', 'payments.created_at');
+
+			return DataTables::of($payments)
+				->editColumn('created_at', function ($row) {
+					return $row->created_at->format('F jS \of Y'); // human readable format
+				})
+				->addColumn('action', 'payment.table-buttons')
+				->rawColumns(['action', 'created_at'])
+				->toJson();
+		}
+	}
 	/**
 	 * Show the form for creating a new resource.
 	 */
