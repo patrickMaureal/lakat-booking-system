@@ -21,13 +21,13 @@
 										<div class="col-md-4">
 											<div>
 												<h3 class="h6 mb-1">Booking Date</h3>
-												{{-- <p class="small pe-4">{{ $schedule['from_date'] }} - {{ $schedule['to_date'] }}</p> --}}
+												<p class="small pe-4">{{ $schedule['checkin_date'] }} - {{ $schedule['checkout_date'] }}</p>
 											</div>
 										</div>
 										<div class="col-md-4">
 											<div>
 												<h3 class="h6 mb-1">Total day/s</h3>
-												{{-- <p class="small pe-4">{{ $schedule['total_days'] }}</p> --}}
+												<p class="small pe-4">{{ $schedule['total_days'] }}</p>
 											</div>
 										</div>
 									</div>
@@ -46,19 +46,42 @@
 					<div class="row">
 						<div class="col-md-12 col-xl-7 text-center">
 							<div class="text-center h-75 my-0 my-md-4">
-								{{-- @php
-									$pumpboatCoverPhoto = $pumpboat->getMedia('cover_photos')[0];
-								@endphp --}}
-								{{-- <img src="{{ $pumpboatCoverPhoto->getUrl() }}" class="text-center w-75 h-75" alt="">
-								<p class="text-center">{{ $pumpboat->name }}</p> --}}
+								@php
+									$accomodationCoverPhoto = $accomodation->getMedia('cover_photos')[0];
+								@endphp
+								<img src="{{ $accomodationCoverPhoto->getUrl() }}" class="text-center w-75 h-75" alt="">
 							</div>
 						</div>
 						<div class="col-md-12 col-xl-5">
 							<ul class="list-group list-group-flush">
 								<li class="list-group-item d-flex align-items-center justify-content-between px-0 border-bottom">
 									<div>
-										<h3 class="h6 mb-1">Description</h3>
-										{{-- <p class="small pe-4">{{ $pumpboat->pumpboatOwner['first_name'] }} {{ $pumpboat->pumpboatOwner['last_name'] }} | {{ $pumpboat->pumpboatCaptain['first_name'] }} {{ $pumpboat->pumpboatCaptain['last_name'] }}</p> --}}
+										<h3 class="h6 mb-1">Name</h3>
+										<p class="large pe-4">{{ $accomodation->name }}</p>
+									</div>
+								</li>
+							</ul>
+							<ul class="list-group list-group-flush">
+								<li class="list-group-item d-flex align-items-center justify-content-between px-0 border-bottom">
+									<div>
+										<h3 class="h6 mb-1">Capacity</h3>
+										<p class="small pe-4">{{ $accomodation->min_capacity }} - {{ $accomodation->max_capacity }} Person/s</p>
+									</div>
+								</li>
+							</ul>
+							<ul class="list-group list-group-flush">
+								<li class="list-group-item d-flex align-items-center justify-content-between px-0 border-bottom">
+									<div>
+										<h3 class="h6 mb-1">Minimum Stay</h3>
+										<p class="small pe-4">{{ $accomodation->min_capacity }} - {{ $accomodation->max_capacity }} Person/s</p>
+									</div>
+								</li>
+							</ul>
+							<ul class="list-group list-group-flush">
+								<li class="list-group-item d-flex align-items-center justify-content-between px-0 border-bottom">
+									<div>
+										<h3 class="h6 mb-1">Price</h3>
+										<p class="small pe-4">{{ $accomodation->price }}</p>
 									</div>
 								</li>
 							</ul>
@@ -83,25 +106,25 @@
 								</tr>
 							</thead>
 							<tbody>
-								{{-- @foreach ($passengers as $passenger)
+								@foreach ($contactInformations as $customer)
 									<tr>
 										<td>
-											<a class="small fw-bold">{{ $passenger['name'] }}</a>
+											<a class="small fw-bold">{{ $customer['first_name'] }}</a>
 										</td>
+
 										<td>
-											<a class="small fw-bold">{{ $passenger['age'] }}</a>
+											<a class="small fw-bold">{{ $customer['last_name'] }}</a>
 										</td>
+
 										<td>
-											<a class="small fw-bold">{{ $passenger['sex'] }}</a>
+											<a class="small fw-bold">{{ $customer['email'] }}</a>
 										</td>
+
 										<td>
-											<a class="small fw-bold">{{ $passenger['nationality'] }}</a>
-										</td>
-										<td>
-											<a class="small fw-bold">{{ ($passenger['pwd']) ? 'Yes' : 'No' }}</a>
+											<a class="small fw-bold">{{ $customer['phone_number'] }}</a>
 										</td>
 									</tr>
-								@endforeach --}}
+								@endforeach
 							</tbody>
 						</table>
 					</div>
