@@ -22,6 +22,6 @@ class AccomodationSelection extends StepComponent
 	public function selectAccomodation(Accomodation $accomodation)
   {
     $this->selectedAccomodation = $accomodation;
-    return $this->dispatch('alert', type:'success', message: 'Customer selected.');
+    return $this->dispatch('alert', type:'success', message: 'Accomodation selected.');
   }
 }
