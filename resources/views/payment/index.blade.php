@@ -37,10 +37,11 @@
 		</div>
 	</div>
 	<div class="card card-body border-0 shadow table-wrapper table-responsive mb-5">
-		<table class="table table-hover">
+		<table class="table table-hover" id="payment-table">
 			<thead>
 				<tr>
-					<th>Booking ID</th>
+					<th>Payment Code</th>
+					<th>Booking Code</th>
 					<th>Amount</th>
 					<th>Transaction Date</th>
 					<th>Action</th>

@@ -1,8 +1,8 @@
 $(function () {
-  // holds the id when button delete click
-  let this_id;
-  // modal
-  let modal = $('#payment-modal');
+	// holds the id when button click
+	let this_id;
+	// modal
+	let modal = $('#payment-modal');
 	// start => datatable
 	let table = $("#payment-table").DataTable({
 		autoWidth: false,
@@ -26,9 +26,10 @@ $(function () {
 			searchPlaceholder: "Search Records..",
 		},
 		columns: [
-			{ data: "booking_id", name: "booking_id" },
-			{ data: "amount", name: "amount" },
-			{ data: "created_at", name: "created_at" },
+			{ data: "payment_code", name: "payments.code" },
+			{ data: "code", name: "bookings.code" },
+			{ data: "amount", name: "payments.amount", searchable: false, },
+			{ data: "created_at", name: "payments.created_at" },
 			{
 				data: "action",
 				name: "action",
@@ -46,7 +47,8 @@ $(function () {
 	$("#custom-page-length").change(function () {
 		table.page.len($(this).val()).draw();
 	}).trigger('change');
-  // start => button delete
+
+	// start => button delete
 	$('body').on('click', '.delete-payment', function () {
 		this_id = $(this).attr('data-id');
 		modal.modal('show');
@@ -58,7 +60,7 @@ $(function () {
 			type: 'DELETE',
 			url: '/payments/' + this_id,
 			dataType: 'json',
-			beforeSend : function() {
+			beforeSend: function () {
 				buttons('destroy-payment', 'start');
 			}
 		})
@@ -75,7 +77,7 @@ $(function () {
 				title: jqXHR.responseJSON.message,
 			});
 		})
-		.always(function (jqXHROrData, textStatus, jqXHROrErrorThrown){
+		.always(function (jqXHROrData, textStatus, jqXHROrErrorThrown) {
 			buttons('destroy-payment', 'finish');
 			modal.modal('hide');
 		});
