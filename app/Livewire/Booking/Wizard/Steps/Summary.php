@@ -4,8 +4,10 @@ namespace App\Livewire\Booking\Wizard\Steps;
 
 use App\Models\Accomodation\Accomodation;
 use App\Models\Booking\Booking;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Spatie\LivewireWizard\Components\StepComponent;
 
 class Summary extends StepComponent
@@ -25,10 +27,8 @@ class Summary extends StepComponent
     $this->accomodation = Accomodation::with(['media'])->findOrFail($accomodationSelectionState['selectedAccomodation']['id']);
 
 		// get selected contact information
-		$contactInformationCollection = collect($contactInformationSelectionState['customers']);
-		$this->contactInformations = $contactInformationCollection->map(function ($item) {
-			return collect($item)->except(['id'])->toArray();
-		});
+		$this->contactInformations = collect($contactInformationSelectionState['customers']);
+
 
 		// get selected schedule
 		$this->schedule['checkin_date'] = Carbon::createFromFormat('Y-m-d', $scheduleSelectionState['checkin_date'])->format('M jS, Y');
@@ -38,52 +38,47 @@ class Summary extends StepComponent
 		return view('livewire.booking.wizard.steps.summary');
 	}
 
-	// public function confirm()
-	// {
+	public function confirm()
+	{
 
-	// 	try {
-	// 		DB::beginTransaction();
+		try {
+			DB::beginTransaction();
 
-	// 		// add Booking
-	// 		$booking 												= new Booking;
-	// 		$booking->checkin_date 					= $this->schedule['checkin_date'];
-	// 		$booking->checkout_date 			 	= $this->schedule['checkout_date'];
-	// 		$booking->accomodation_id 			= $this->accomodation->id;
-	// 		$booking->status 								= 'pending';
-	// 		$booking->save();
+			// add Booking
+			$booking 														= new Booking;
+			$booking->checkin_date 							= $this->schedule['checkin_date'];
+			$booking->checkout_date 			 			= $this->schedule['checkout_date'];
+			$booking->accomodation_id 					=	$this->accomodation->id;
+			$booking->booking_status 						= 'Pending';
+			$booking->payment_status 						= 'Unpaid';
+			$booking->save();
 
-	// 		// add Islet
-	// 		$booking->islets()->sync($this->islets->pluck('id'));
 
-	// 		// add Passenger
-	// 		$booking->bookingPassengers()->createMany($this->passengers);
+			DB::commit();
+		} catch (\Throwable $th) {
+			DB::rollBack();
+			$this->dispatch('close-booking-confirmation-modal');
+			return $this->dispatch('alert', type:'error', message: 'Booking failed. Please review details and try again.');
+		}
 
-	// 		DB::commit();
-	// 	} catch (\Throwable $th) {
-	// 		DB::rollBack();
-	// 		$this->dispatch('close-booking-confirmation-modal');
-	// 		return $this->dispatch('alert', type:'error', message: 'Booking failed. Please review details and try again.');
-	// 	}
+		$this->dispatch('close-booking-confirmation-modal');
+    $this->dispatch('swal', type:'success', title: 'Booking Success', text: 'Receipt will be downloaded automatically.', url: route('booking.index'));
 
-	// 	$this->dispatch('close-booking-confirmation-modal');
-  //   $this->dispatch('swal', type:'success', title: 'Booking Success', text: 'Receipt will be downloaded automatically.', url: route('booking.index'));
+		// booking qrcode
+		$bookingQrCode = base64_encode(QrCode::format('svg')->size(70)->generate( $booking->code ));
 
-	// 	// booking qrcode
-	// 	$bookingQrCode = base64_encode(QrCode::format('svg')->size(70)->generate( $booking->code ));
+		// download receipt
+		$pdfContent = Pdf::loadView('booking.download.receipt', [
+			'bookingQrCode' 			=> $bookingQrCode,
+			'booking' 						=> $booking,
+			'schedule' 						=> $this->schedule,
+			'accomodation' 				=> $this->accomodation,
+			'contactInformations' => $this->contactInformations
+		])->setPaper('A4', 'portrait')->output();
+		return response()->streamDownload(
+			fn () => print($pdfContent),
+			"booking-receipt.pdf"
+		);
 
-	// 	// download receipt
-	// 	$pdfContent = Pdf::loadView('booking.download.receipt', [
-	// 		'bookingQrCode' => $bookingQrCode,
-	// 		'booking' 			=> $booking,
-	// 		'schedule' 			=> $this->schedule,
-	// 		'passengers' 		=> $this->passengers,
-	// 		'islets' 				=> $this->islets,
-	// 		'pumpboat' 			=> $this->pumpboat
-	// 	])->setPaper('A4', 'portrait')->output();
-	// 	return response()->streamDownload(
-	// 		fn () => print($pdfContent),
-	// 		"booking-receipt.pdf"
-	// 	);
-
-	// }
+	}
 }
