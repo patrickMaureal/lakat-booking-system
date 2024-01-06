@@ -4,7 +4,7 @@ namespace App\Models\Booking;
 
 use App\Models\Accomodation\Accomodation;
 use App\Models\Payment\Payment;
-use App\Services\Booking\BookingCodeService;
+use App\Services\BookingCodeService;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

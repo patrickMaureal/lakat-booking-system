@@ -3,7 +3,6 @@
 namespace App\Livewire\Booking\Wizard\Steps;
 
 use App\Models\Accomodation\Accomodation;
-use Livewire\Attributes\Locked;
 use Spatie\LivewireWizard\Components\StepComponent;
 
 class AccomodationSelection extends StepComponent
@@ -23,6 +22,6 @@ class AccomodationSelection extends StepComponent
 	public function selectAccomodation(Accomodation $accomodation)
   {
     $this->selectedAccomodation = $accomodation;
-    return $this->dispatch('alert', type:'success', message: 'Pumpboat selected.');
+    return $this->dispatch('alert', type:'success', message: 'Customer selected.');
   }
 }

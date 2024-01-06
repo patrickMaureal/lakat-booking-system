@@ -55,10 +55,11 @@
               <ul class="list-group list-group-flush">
                   <li class="list-group-item d-flex align-items-center justify-content-between px-0 border-bottom">
                     <div>
-                      <h3 class="h6 mb-1">Description</h3>
-                      <p class="small pe-4">{{ $selectedAccomodation['description'] }}</p>
+                      <h3 class="h6 mb-1">Capacity</h3>
+                      <p class="small pe-4">{{ $selectedAccomodation['min_capacity'] }} - {{ $selectedAccomodation['max_capacity'] }} Persons</p>
                     </div>
                   </li>
+
               </ul>
             </div>
           @endif

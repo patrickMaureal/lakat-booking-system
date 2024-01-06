@@ -78,10 +78,25 @@
 		@push('scripts')
 			<script>
 
+				window.addEventListener('open-customer-form-modal', event => {
+					$('#customerFormModal').modal('show');
+				});
+
+				window.addEventListener('close-customer-form-modal', event => {
+					$('#customerFormModal').modal('hide');
+				});
+
+				window.addEventListener('open-customer-delete-modal', event => {
+					$('#customerDeleteModal').modal('show');
+				});
+
+				window.addEventListener('close-customer-delete-modal', event => {
+					$('#customerDeleteModal').modal('hide');
+				});
+
 				window.addEventListener('close-booking-confirmation-modal', event => {
 					$('#bookingConfirmationModal').modal('hide');
 				});
-
 
 				window.addEventListener('alert', event => {
 					toast.fire({
