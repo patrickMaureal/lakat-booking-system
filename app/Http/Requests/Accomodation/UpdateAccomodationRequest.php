@@ -24,6 +24,7 @@ class UpdateAccomodationRequest extends FormRequest
 		return [
 			'availability' 			=> ['required', 'string'],
 			'name' 							=> ['required', 'string'],
+			'min_stay' 					=> ['required', 'numeric'],
 			'min_capacity' 			=> ['required', 'numeric'],
 			'max_capacity' 			=> ['required', 'numeric'],
 			'total_occupied' 		=> ['required', 'numeric'],

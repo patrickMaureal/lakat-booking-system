@@ -23,6 +23,7 @@ class StoreAccomodationRequest extends FormRequest
 	{
 		return [
 			'name' 							=> ['required', 'string'],
+			'min_stay' 					=> ['required', 'numeric'],
 			'min_capacity' 			=> ['required', 'numeric'],
 			'max_capacity' 			=> ['required', 'numeric'],
 			'total_occupied' 		=> ['required', 'numeric'],

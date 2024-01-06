@@ -29,6 +29,17 @@
 						</div>
 						<div class="col-md-6 mb-3">
 							<div class="form-group">
+								<label for="min_stay">Minimum Stay
+									<x-asterisks />
+								</label>
+								<input class="form-control @error('min_stay') is-invalid @enderror" id="min_stay" name="min_stay" type="number" placeholder="0" value="{{ old('min_stay') }}" required>
+								@error('min_stay')
+									<x-input-error message="{{ $message }}" />
+								@enderror
+							</div>
+						</div>
+						<div class="col-md-6 mb-3">
+							<div class="form-group">
 								<label for="min_capacity">Minimum Capacity
 									<x-asterisks />
 								</label>

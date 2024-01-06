@@ -12,6 +12,8 @@
   <!-- Favicons -->
   <link href="{{ asset('img/herobiz/favicon.png') }}" rel="icon">
   <link href="{{ asset('img/herobiz/apple-touch-icon.png') }}" rel="apple-touch-icon">
+	<link rel="manifest" href="/site.webmanifest">
+
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">

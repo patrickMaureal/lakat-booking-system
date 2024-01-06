@@ -55,6 +55,7 @@ class AccomodationController extends Controller
 
 		$accomodation 											= new Accomodation;
 		$accomodation->name 								= $validated['name'];
+		$accomodation->min_stay 						= $validated['min_stay'];
 		$accomodation->min_capacity 				= $validated['min_capacity'];
 		$accomodation->max_capacity 				= $validated['max_capacity'];
 		$accomodation->total_occupied 			= $validated['total_occupied'];
@@ -92,6 +93,7 @@ class AccomodationController extends Controller
 		$validated = $request->validated();
 
 		$accomodation->name 								= $validated['name'];
+		$accomodation->min_stay 						= $validated['min_stay'];
 		$accomodation->min_capacity 				= $validated['min_capacity'];
 		$accomodation->max_capacity 				= $validated['max_capacity'];
 		$accomodation->total_occupied 			= $validated['total_occupied'];
