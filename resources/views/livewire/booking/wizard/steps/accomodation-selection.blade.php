@@ -59,6 +59,12 @@
                       <p class="small pe-4">{{ $selectedAccomodation['min_capacity'] }} - {{ $selectedAccomodation['max_capacity'] }} Persons</p>
                     </div>
                   </li>
+									<li class="list-group-item d-flex align-items-center justify-content-between px-0 border-bottom">
+                    <div>
+                      <h3 class="h6 mb-1">Price</h3>
+                      <p class="small pe-4">{{ $selectedAccomodation['price'] }}</p>
+                    </div>
+                  </li>
 
               </ul>
             </div>

@@ -73,7 +73,7 @@
 								<li class="list-group-item d-flex align-items-center justify-content-between px-0 border-bottom">
 									<div>
 										<h3 class="h6 mb-1">Minimum Stay</h3>
-										<p class="small pe-4">{{ $accomodation->min_capacity }} - {{ $accomodation->max_capacity }} Person/s</p>
+										<p class="small pe-4">{{ $accomodation->min_stay }} Night/s</p>
 									</div>
 								</li>
 							</ul>
