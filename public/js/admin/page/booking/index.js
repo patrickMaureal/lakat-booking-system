@@ -33,7 +33,7 @@ $(function () {
 			{ data: "created_at", name: "created_at" },
 			{ data: "checkin_date", name: "checkin_date" },
 			{ data: "checkout_date", name: "checkout_date" },
-			{ data: "status", name: "status" },
+			{ data: "booking_status", name: "booking_status" },
 			{ data: "payment_status", name: "payment_status" },
 			{
 				data: "action",

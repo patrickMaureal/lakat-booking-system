@@ -25,13 +25,19 @@ class BookingController extends Controller
 			$customers = Booking::select('id','code','created_at','checkin_date','checkout_date','booking_status','payment_status');
 
 			return DataTables::of($customers)
+				->editColumn('checkin_date', function ($row) {
+					return $row->checkin_date->format('F jS \of Y'); // human readable format
+				})
+				->editColumn('checkout_date', function ($row) {
+					return $row->checkout_date->format('F jS \of Y'); // human readable format
+				})
 				->editColumn('created_at', function ($row) {
 					return $row->created_at->format('F jS \of Y'); // human readable format
 				})
 				->addColumn('action', function ($row) {
 					return view('booking.table-buttons', compact('row'));
 				})
-				->rawColumns(['action'])
+				->rawColumns(['action', 'checkin_date', 'checkout_date', 'created_at'])
 				->toJson();
 		}
 	}
