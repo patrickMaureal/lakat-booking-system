@@ -15,6 +15,7 @@ class Accomodation extends Model implements HasMedia
 
 	protected $fillable = [
 		'name',
+		'min_stay',
 		'min_capacity',
 		'max_capacity',
 		'availability',

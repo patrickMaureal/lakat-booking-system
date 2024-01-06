@@ -14,6 +14,7 @@ return new class extends Migration
 		Schema::create('accomodations', function (Blueprint $table) {
 			$table->uuid('id')->primary();
 			$table->string('name');
+			$table->bigInteger('min_stay');
 			$table->bigInteger('min_capacity');
 			$table->bigInteger('max_capacity');
 			$table->string('availability')->default('Yes');
