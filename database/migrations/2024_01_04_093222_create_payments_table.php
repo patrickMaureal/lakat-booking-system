@@ -16,8 +16,6 @@ return new class extends Migration
 			$table->string('code')->index();
 			$table->bigInteger('code_counter')->index();
 			$table->foreignUuid('booking_id')->constrained()->onDelete('cascade');
-			$table->string('payment_mode');
-			$table->string('reference_number');
 			$table->decimal('amount', 8, 2);
 			$table->timestamps();
 			$table->softDeletes();

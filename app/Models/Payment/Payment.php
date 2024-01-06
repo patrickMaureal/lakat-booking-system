@@ -3,7 +3,7 @@
 namespace App\Models\Payment;
 
 use App\Models\Booking\Booking;
-use App\Services\Payment\PaymentCodeService;
+use App\Services\PaymentCodeService;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -18,8 +18,6 @@ class Payment extends Model
 		'code',
 		'code_counter',
 		'booking_id',
-		'payment_mode',
-		'reference_number',
 		'amount',
 	];
 
