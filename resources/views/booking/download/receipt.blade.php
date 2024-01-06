@@ -78,17 +78,6 @@
 				padding: 3px;
 			}
 
-			.booking-status{
-				font-size: 1rem;
-				color: blue;
-				text-transform: uppercase;
-			}
-			.payment-status{
-				font-size: 1rem;
-				color: red;
-				text-transform: uppercase;
-			}
-
 			h3 {
 				font-size: 1.25rem;
 			}
@@ -139,8 +128,6 @@
 					<tbody>
 						<tr>
 							<td>
-								<h2>Booking Status: <span class="booking-status">{{ $booking['booking_status'] }}</span></h2>
-								<h2>Payment Status: <span class="payment-status">{{ $booking['payment_status'] }}</span></h2>
 								<h2>Booking Code: <span style="font-weight: lighter">{{ $booking['code'] }}</span></h2>
 								<h2>Booking Created: <span style="font-weight: lighter">{{ $booking['created_at'] }}</span></h2>
 							</td>
