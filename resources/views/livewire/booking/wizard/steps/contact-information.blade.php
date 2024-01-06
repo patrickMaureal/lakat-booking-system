@@ -53,7 +53,6 @@
 												</button>
 												<div class="dropdown-menu py-2">
 													<button type="button" class="dropdown-item fw-bold" wire:click="edit('{{ $customer['id'] }}')">Edit</button>
-													<button type="button" class="dropdown-item text-danger rounded-bottom fw-bold" wire:click="delete('{{ $customer['id'] }}')">Delete</button>
 											</div>
 										</td>
                   </tr>
@@ -121,26 +120,5 @@
       </div>
     </div>
   </div>
-
-	{{-- delete modal --}}
-	<div class="modal fade" data-backdrop="static" data-keyboard="false" id="customerDeleteModal" tabindex="-1" role="dialog" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title">Delete Confirmation</h5>
-					<span class="pull-right" wire:loading>
-						<img src="{{ asset('img/spinner.gif') }}">
-					</span>
-				</div>
-				<div class="modal-body" >
-					<p>Delete Customer Information?</p>
-				</div>
-				<div class="modal-footer">
-					<button type="button" id="close-button" data-bs-dismiss="modal" class="btn btn-outline-secondary"><i class="fas fa-window-close"></i> Close </button>
-					<button type="button" wire:click="destroy" class="btn btn-outline-danger"><i class="far fa-trash-alt"></i> Delete </button>
-				</div>
-			</div>
-		</div>
-	</div>
 
 </div>

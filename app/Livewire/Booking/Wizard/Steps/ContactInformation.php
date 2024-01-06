@@ -88,30 +88,4 @@ class ContactInformation extends StepComponent
     }
 	}
 
-	public function delete($customerId)
-	{
-    $this->dispatch('open-customer-delete-modal');
-
-    foreach ($this->customers as $item) {
-      if ($item['id'] == $customerId) {
-				$this->id = $item['id'];
-      }
-    }
-	}
-
-	public function destroy()
-  {
-    foreach ($this->customers as $key => $item) {
-      if ($item['id'] == $this->id) {
-
-        unset($this->customers[$key]);
-
-				$this->clearForm();
-
-				$this->dispatch('close-customer-delete-modal');
-        return $this->dispatch('alert', type:'success', message: 'Customer has been successfully deleted.');
-      }
-    }
-  }
-
 }
