@@ -66,6 +66,7 @@ class PaymentController extends Controller
 			]);
 
 			// update Booking status
+			$booking->booking_status = 'Confirmed';
 			$booking->payment_status = 'Paid';
 			$booking->save();
 
@@ -115,7 +116,8 @@ class PaymentController extends Controller
 
 			// revert Booking status
 			Booking::where('id', $payment->booking_id)->update([
-				'payment_status' => 'Unpaid'
+				'payment_status' => 'Unpaid',
+				'booking_status' => 'Pending'
 			]);
 
 			// delete Payment

@@ -52,6 +52,7 @@ $(function () {
 	$("#custom-page-length").change(function () {
 		table.page.len($(this).val()).draw();
 	}).trigger('change');
+	
 	// start => button cancel
 	$('body').on('click', '.cancel-booking', function () {
 		this_id = $(this).attr('data-id');
@@ -89,44 +90,7 @@ $(function () {
 	});
 	// end
 
-	// start => button confirm
-	$('body').on('click', '.confirm-booking', function () {
-		this_id = $(this).attr('data-id');
-		confirmModal.modal('show');
-	});
-	// end
-
-	//start => modal button confirm
-	$('body').on('click', '#confirm-booking', function () {
-		$.ajax({
-			type: 'PUT',
-    	url: '/bookings/confirm/' + this_id,
-    	dataType: 'json',
-    	beforeSend: function () {
-        buttons('confirm-booking', 'start');
-			}
-		})
-		.done(function (response) {
-			table.ajax.reload();
-			toast.fire({
-				icon: 'success',
-				title: response.message,
-			});
-		})
-		.fail(function (jqXHR, textStatus, errorThrown) {
-			toast.fire({
-				icon: 'error',
-				title: jqXHR.responseJSON.message,
-			});
-		})
-		.always(function (jqXHROrData, textStatus, jqXHROrErrorThrown) {
-			buttons('confirm-booking', 'finish');
-			confirmModal.modal('hide');
-		});
-	});
-	// end
-
-	// start => button confirm
+	// start => button revert
 	$('body').on('click', '.revert-booking', function () {
 		this_id = $(this).attr('data-id');
 		revertModal.modal('show');
