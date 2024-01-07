@@ -17,6 +17,7 @@ class RevertBooking extends Controller
 		if ($request->ajax()) {
 
 			$booking->booking_status = 'Pending';
+			$booking->payment_status = 'Unpaid';
 			$booking->save();
 
 			return response()->json([
