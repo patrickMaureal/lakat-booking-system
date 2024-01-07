@@ -4,6 +4,7 @@ use App\Http\Controllers\Accomodation\AccomodationController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Booking\BookingController;
+use App\Http\Controllers\Booking\CancelBooking;
 use App\Http\Controllers\Booking\RevertBooking;
 use App\Http\Controllers\Customer\CustomerController;
 use App\Http\Controllers\Home\BookingController as HomeBookingController;
@@ -56,6 +57,7 @@ Route::middleware('auth')->group(function () {
 	Route::prefix('bookings')->name('bookings.')->group(function () {
 		Route::get('table', [BookingController::class, 'showTable'])->name('table');
 		Route::put('/revert/{booking}', RevertBooking::class)->name('revert');
+		Route::put('/cancel/{booking}', CancelBooking::class)->name('cancel');
 	});
 	Route::resource('bookings', BookingController::class);
 

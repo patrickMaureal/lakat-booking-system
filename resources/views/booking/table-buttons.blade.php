@@ -16,8 +16,6 @@
 			@endif
 
 				{{-- <a class="dropdown-item text-success " target="_blank" href="{{ route('bookings.print', $row['id']) }}"><span class="bi bi-printer-fill me-2"></span>Print</a> --}}
-
-
 		@endif
 	</div>
 </div>

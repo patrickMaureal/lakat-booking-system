@@ -51,9 +51,6 @@
 		</div>
 	</div>
 
-	{{-- Confirm Booking --}}
-	<x-modal modal-id="confirm-booking-modal" button-id="confirm-booking" type="confirm" label="Booking" />
-
 	{{-- Cancel Booking --}}
 	<x-modal modal-id="cancel-booking-modal" button-id="cancel-booking" type="cancel" label="Booking" />
 
