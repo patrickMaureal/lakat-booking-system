@@ -70,7 +70,6 @@ class BookingController extends Controller
 	 */
 	public function edit(Booking $booking): View
 	{
-		return view('booking.edit',compact('booking'));
 	}
 
 	/**

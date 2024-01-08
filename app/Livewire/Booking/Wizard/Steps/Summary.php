@@ -3,7 +3,7 @@
 namespace App\Livewire\Booking\Wizard\Steps;
 
 use App\Models\Accomodation\Accomodation;
-use App\Models\Booking\Booking;
+use App\Models\Reservation\Reservation;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -44,15 +44,15 @@ class Summary extends StepComponent
 		try {
 			DB::beginTransaction();
 
-			// add Booking
-			$booking 														= new Booking;
-			$booking->checkin_date 							= $this->schedule['checkin_date'];
-			$booking->checkout_date 			 			= $this->schedule['checkout_date'];
-			$booking->accomodation_id 					=	$this->accomodation->id;
-			$booking->booking_status 						= 'Pending';
-			$booking->payment_status 						= 'Unpaid';
-			$booking->save();
-
+			// add Reservation
+			$reservation 																		= new Reservation;
+			$reservation->checkin_date 											= $this->schedule['checkin_date'];
+			$reservation->checkout_date 			 							= $this->schedule['checkout_date'];
+			$reservation->accomodation_id 									=	$this->accomodation->id;
+			$reservation->status 														= 'Pending';
+			$reservation->payment_status 										= 'Unpaid';
+			$reservation->accommodation_amount 							= $this->accomodation->price;
+			$reservation->save();
 
 			DB::commit();
 		} catch (\Throwable $th) {
@@ -64,20 +64,20 @@ class Summary extends StepComponent
 		$this->dispatch('close-booking-confirmation-modal');
     $this->dispatch('swal', type:'success', title: 'Booking Success', text: 'Receipt will be downloaded automatically.', url: route('booking.index'));
 
-		// booking qrcode
-		$bookingQrCode = base64_encode(QrCode::format('svg')->size(70)->generate( $booking->code ));
+		// reservation qrcode
+		$reservationQrCode = base64_encode(QrCode::format('svg')->size(70)->generate( $reservation->code ));
 
 		// download receipt
-		$pdfContent = Pdf::loadView('booking.download.receipt', [
-			'bookingQrCode' 			=> $bookingQrCode,
-			'booking' 						=> $booking,
-			'schedule' 						=> $this->schedule,
-			'accomodation' 				=> $this->accomodation,
-			'contactInformations' => $this->contactInformations
+		$pdfContent = Pdf::loadView('reservation.download.receipt', [
+			'reservationQrCode' 					=> $reservationQrCode,
+			'reservation' 								=> $reservation,
+			'schedule' 										=> $this->schedule,
+			'accomodation' 								=> $this->accomodation,
+			'contactInformations' 				=> $this->contactInformations
 		])->setPaper('A4', 'portrait')->output();
 		return response()->streamDownload(
 			fn () => print($pdfContent),
-			"booking-receipt.pdf"
+			"reservation-receipt.pdf"
 		);
 
 	}

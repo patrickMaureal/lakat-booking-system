@@ -20,6 +20,7 @@ return new class extends Migration
 			$table->date('checkout_date')->nullable()->index();
 			$table->string('status')->default('Pending');
 			$table->string('payment_status')->default('Unpaid');
+			$table->decimal('accommodation_amount', 8, 2);
 			$table->timestamps();
 			$table->softDeletes();
 		});

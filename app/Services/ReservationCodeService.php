@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Models\Reservation;
+use App\Models\Reservation\Reservation;
 
 class ReservationCodeService
 {

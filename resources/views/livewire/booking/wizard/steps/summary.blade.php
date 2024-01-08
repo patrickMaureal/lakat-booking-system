@@ -5,7 +5,7 @@
 	<div class="col-12 d-flex align-items-center justify-content-center">
 		<div class="bg-gray-100 shadow border-0 rounded border-light p-4 p-lg-5 w-100">
 			<div class="text-center text-md-center mb-4 mt-md-0">
-				<h1 class="mb-0 h3">Booking Summary</h1>
+				<h1 class="mb-0 h3">Reservation Summary</h1>
 			</div>
 
 			<div class="card border-0 shadow rounded mb-4">
@@ -20,7 +20,7 @@
 									<div class="row">
 										<div class="col-md-4">
 											<div>
-												<h3 class="h6 mb-1">Booking Date</h3>
+												<h3 class="h6 mb-1">Reservation Date</h3>
 												<p class="small pe-4">{{ $schedule['checkin_date'] }} - {{ $schedule['checkout_date'] }}</p>
 											</div>
 										</div>
@@ -133,25 +133,25 @@
 
 			<div>
 				<button type="button" class="btn btn-gray-800" wire:click="previousStep">Previous</button>
-				<button type="button" class="btn btn-gray-800" data-bs-toggle="modal" data-bs-target="#bookingConfirmationModal">Submit</button>
+				<button type="button" class="btn btn-gray-800" data-bs-toggle="modal" data-bs-target="#reservationConfirmationModal">Submit</button>
 			</div>
 
 		</div>
 	</div>
 
 	{{-- Submit modal --}}
-	<div class="modal fade" data-backdrop="static" data-keyboard="false" id="bookingConfirmationModal" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal fade" data-backdrop="static" data-keyboard="false" id="reservationConfirmationModal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog " role="document">
       <div class="modal-content">
 
 				<div class="modal-header">
-					<h5 class="modal-title">Booking Confirmation</h5>
+					<h5 class="modal-title">Reservation Confirmation</h5>
 					<span class="pull-right" wire:loading>
 						<i class="fas fa-spinner fa-spin"></i>
 					</span>
 				</div>
 				<div class="modal-body">
-					<p>Finalize Booking?</p>
+					<p>Finalize Reservation?</p>
 				</div>
 				<div class="modal-footer">
 					<button type="button" data-bs-dismiss="modal" class="btn btn-outline-secondary"><i class="far fa-window-close"></i> No </button>

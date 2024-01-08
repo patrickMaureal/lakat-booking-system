@@ -44,7 +44,7 @@
 
 				@if($type === 'cancel')
 					<div class="modal-header">
-						<h5 class="modal-title">Booking Cancellation</h5>
+						<h5 class="modal-title">{{ $label }} Cancellation</h5>
 						<span class="pull-right">
 							<img class="spinner" src="{{ asset('img/spinner.gif') }}">
 						</span>
@@ -61,7 +61,7 @@
 
 				@if($type === 'revert')
 					<div class="modal-header">
-						<h5 class="modal-title">Booking Status Revert</h5>
+						<h5 class="modal-title">{{ $label }} Status Revert</h5>
 						<span class="pull-right">
 							<img class="spinner" src="{{ asset('img/spinner.gif') }}">
 						</span>
