@@ -21,10 +21,10 @@ class BookingController extends Controller
 	public function showTable(Request $request)
 	{
 		if ($request->ajax()) {
+			$bookings = Booking::join('reservations', 'bookings.reservation_id', '=', 'reservations.id')
+				->select('bookings.id', 'bookings.code as booking_code', 'reservations.code as code', 'reservations.checkin_date','reservations.checkout_date','bookings.created_at','bookings.status');
 
-			$customers = Booking::select('id','code','created_at','checkin_date','checkout_date','booking_status','payment_status');
-
-			return DataTables::of($customers)
+			return DataTables::of($bookings)
 				->editColumn('checkin_date', function ($row) {
 					return $row->checkin_date->format('F jS \of Y'); // human readable format
 				})
@@ -34,10 +34,8 @@ class BookingController extends Controller
 				->editColumn('created_at', function ($row) {
 					return $row->created_at->format('F jS \of Y'); // human readable format
 				})
-				->addColumn('action', function ($row) {
-					return view('booking.table-buttons', compact('row'));
-				})
-				->rawColumns(['action', 'checkin_date', 'checkout_date', 'created_at'])
+				->addColumn('action', 'booking.table-buttons')
+				->rawColumns(['action', 'created_at'])
 				->toJson();
 		}
 	}
@@ -68,7 +66,7 @@ class BookingController extends Controller
 	/**
 	 * Show the form for editing the specified resource.
 	 */
-	public function edit(Booking $booking): View
+	public function edit(Booking $booking)
 	{
 	}
 

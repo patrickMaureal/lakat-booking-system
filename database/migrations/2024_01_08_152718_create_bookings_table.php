@@ -18,7 +18,7 @@ return new class extends Migration
 			$table->foreignUuid('reservation_id')->constrained()->onDelete('cascade');
 			$table->date('checkin_date');
 			$table->date('checkout_date');
-			$table->string('status');
+			$table->string('status')->default('Booked');
 			$table->timestamps();
 			$table->softDeletes();
 		});

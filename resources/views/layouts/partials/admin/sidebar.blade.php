@@ -66,10 +66,18 @@
 					<span class="sidebar-text">Accomodation</span>
 				</a>
 			</li>
+			<li class="nav-item {{ request()->routeIs('bookings.*') ? 'active' : '' }}">
+				<a href="{{ route('bookings.index') }}" class="nav-link">
+					<span class="sidebar-icon">
+						<i class="icon icon-xs me-2  bi bi-bookmark-check"></i>
+					</span>
+					<span class="sidebar-text">Booking</span>
+				</a>
+			</li>
 			<li class="nav-item {{ request()->routeIs('reservations.*') ? 'active' : '' }}">
 				<a href="{{ route('reservations.index') }}" class="nav-link">
 					<span class="sidebar-icon">
-						<i class="icon icon-xs me-2  bi bi-bookmark-check"></i>
+						<i class="icon icon-xs me-2  bi bi-journal-check"></i>
 					</span>
 					<span class="sidebar-text">Reservations</span>
 				</a>

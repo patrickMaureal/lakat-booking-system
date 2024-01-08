@@ -2,9 +2,9 @@ $(function () {
 	// holds the id when button click
 	let this_id;
 	// modals
-	let confirmModal = $('#confirm-booking-modal');
-	let cancelModal = $('#cancel-booking-modal');
-	let revertModal = $('#revert-booking-modal');
+	let checkinModal = $('#checkin-booking-modal');
+	let checkoutModal = $('#checkout-booking-modal');
+
 
 	// start => datatable
 	let table = $("#booking-table").DataTable({
@@ -29,12 +29,12 @@ $(function () {
 			searchPlaceholder: "Search Records..",
 		},
 		columns: [
-			{ data: "code", name: "code" },
-			{ data: "created_at", name: "created_at" },
-			{ data: "checkin_date", name: "checkin_date" },
-			{ data: "checkout_date", name: "checkout_date" },
-			{ data: "booking_status", name: "booking_status" },
-			{ data: "payment_status", name: "payment_status" },
+			{ data: "bookings_code", name: "bookings.code" },
+			{ data: "code", name: "reservations.code" },
+			{ data: "created_at", name: "bookings.created_at" },
+			{ data: "checkin_date", name: "reservations.checkin_date" },
+			{ data: "checkout_date", name: "reservations.checkout_date" },
+			{ data: "status", name: "bookings.status" },
 			{
 				data: "action",
 				name: "action",
@@ -52,22 +52,22 @@ $(function () {
 	$("#custom-page-length").change(function () {
 		table.page.len($(this).val()).draw();
 	}).trigger('change');
-	
-	// start => button cancel
-	$('body').on('click', '.cancel-booking', function () {
+
+	// start => button checkin
+	$('body').on('click', '.checkin-booking', function () {
 		this_id = $(this).attr('data-id');
-		cancelModal.modal('show');
+		checkinModal.modal('show');
 	});
 	// end
 
-	//start => modal button cancel
-	$('body').on('click', '#cancel-booking', function () {
+	//start => modal button checkin
+	$('body').on('click', '#delete-booking', function () {
 		$.ajax({
 			type: 'PUT',
-			url: '/bookings/cancel/' + this_id,
+			url: '/bookings/checkin/' + this_id,
 			dataType: 'json',
 			beforeSend: function () {
-				buttons('cancel-booking', 'start');
+				buttons('checkin-booking', 'start');
 			}
 		})
 			.done(function (response) {
@@ -84,27 +84,27 @@ $(function () {
 				});
 			})
 			.always(function (jqXHROrData, textStatus, jqXHROrErrorThrown) {
-				buttons('cancel-booking', 'finish');
-				cancelModal.modal('hide');
+				buttons('checkin-booking', 'finish');
+				checkinModal.modal('hide');
 			});
 	});
 	// end
 
-	// start => button revert
-	$('body').on('click', '.revert-booking', function () {
+	// start => button checkout
+	$('body').on('click', '.checkout-booking', function () {
 		this_id = $(this).attr('data-id');
-		revertModal.modal('show');
+		checkoutModal.modal('show');
 	});
 	// end
 
-	//start => modal button revert
-	$('body').on('click', '#revert-booking', function () {
+	//start => modal button checkout
+	$('body').on('click', '#checkout-booking', function () {
 		$.ajax({
 			type: 'PUT',
-    	url: '/bookings/revert/' + this_id,
+    	url: '/bookings/checkout/' + this_id,
     	dataType: 'json',
     	beforeSend: function () {
-        buttons('revert-booking', 'start');
+        buttons('checkout-booking', 'start');
 			}
 		})
 		.done(function (response) {
@@ -121,8 +121,8 @@ $(function () {
 			});
 		})
 		.always(function (jqXHROrData, textStatus, jqXHROrErrorThrown) {
-			buttons('revert-booking', 'finish');
-			revertModal.modal('hide');
+			buttons('checkout-booking', 'finish');
+			checkoutModal.modal('hide');
 		});
 	});
 	// end

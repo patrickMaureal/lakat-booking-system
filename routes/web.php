@@ -3,6 +3,7 @@
 use App\Http\Controllers\Accomodation\AccomodationController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\PasswordController;
+use App\Http\Controllers\Booking\BookingController;
 use App\Http\Controllers\Home\BookingController as HomeBookingController;
 use App\Http\Controllers\Payment\PaymentController;
 use App\Http\Controllers\ProfileController;
@@ -52,7 +53,7 @@ Route::middleware('auth')->group(function () {
 	});
 	Route::resource('accomodations', AccomodationController::class);
 
-	//booking
+	//reservation
 	Route::prefix('reservations')->name('reservations.')->group(function () {
 		Route::get('table', [ReservationController::class, 'showTable'])->name('table');
 		Route::put('/revert/{reservation}', RevertReservation::class)->name('revert');
@@ -66,6 +67,11 @@ Route::middleware('auth')->group(function () {
 	});
 	Route::resource('payments', PaymentController::class);
 
+	//booking
+	Route::prefix('bookings')->name('bookings.')->group(function () {
+		Route::get('table', [BookingController::class, 'showTable'])->name('table');
+	});
+	Route::resource('bookings', BookingController::class);
 
 
 });
