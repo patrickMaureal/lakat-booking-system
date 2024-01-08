@@ -3,7 +3,7 @@
 
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>Booking Receipt</title>
+		<title>Reservation Receipt</title>
 		<style>
 			* {
 				font-family: "DejaVu Sans", Arial, Helvetica, sans-serif;
@@ -99,8 +99,8 @@
 						<td>
 							<strong style="font-size:1.3rem;">LAKAT BALAS BEACH ADVENTURE CAMP</strong>
 						</td>
-						<td rowspan="4" style="width: 20%;">
-							<img src="{{ asset('img/lakat-balas-logo.jpg') }}" alt="" height="100px">
+						<td rowspan="4" style="width: 8%;">
+							<img src="{{ asset('img/lakat-balas-logo.jpg') }}" alt="" height="50px">
 						</td>
 					</tr>
 					<tr>
