@@ -13,7 +13,7 @@
 
 				<div class="row gy-5">
 
-					<div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+					<div class="col-xl-4 col-md-6" data-aos="zoom-in" data-aos-delay="200">
 						<div class="service-item">
 							<div class="img">
 								<img src="{{ asset('img/lakat-balas/accomodations/Glamping-A-Hut.png') }}" class="img-fluid" alt="">
@@ -22,7 +22,7 @@
 								<div class="icon">
 									<i class="bi bi-activity"></i>
 								</div>
-								<a href="#" class="stretched-link">
+								<a href="{{ route('booking.index') }}" class="stretched-link">
 									<h3>Glamping/A Hut</h3>
 								</a>
 								<p>Experience nature's charm in our luxurious glamping hut—a blend of rustic allure and modern comfort.</p>
@@ -31,7 +31,7 @@
 						</div>
 					</div><!-- End Service Item -->
 
-					<div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="300">
+					<div class="col-xl-4 col-md-6" data-aos="zoom-in" data-aos-delay="300">
 						<div class="service-item">
 							<div class="img">
 								<img src="{{ asset('img/lakat-balas/accomodations/family-tent.jpg') }}" class="img-fluid" alt="">
@@ -40,7 +40,7 @@
 								<div class="icon">
 									<i class="bi bi-broadcast"></i>
 								</div>
-								<a href="#" class="stretched-link">
+								<a href="{{ route('booking.index') }}" class="stretched-link">
 									<h3>Family Tent</h3>
 								</a>
 								<p>Spacious and cozy, our family tent offers a comfortable retreat in nature, perfect for bonding and adventure.</p>
@@ -49,7 +49,7 @@
 						</div>
 					</div><!-- End Service Item -->
 
-					<div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="400">
+					<div class="col-xl-4 col-md-6" data-aos="zoom-in" data-aos-delay="400">
 						<div class="service-item">
 							<div class="img">
 								<img src="{{ asset('img/lakat-balas/accomodations/lakat-tent.jpg') }}" class="img-fluid" alt="">
@@ -58,7 +58,7 @@
 								<div class="icon">
 									<i class="bi bi-easel"></i>
 								</div>
-								<a href="#" class="stretched-link">
+								<a href="{{ route('booking.index') }}" class="stretched-link">
 									<h3>Lakat Tent</h3>
 
 								</a>
@@ -69,7 +69,7 @@
 						</div>
 					</div><!-- End Service Item -->
 
-					<div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="500">
+					<div class="col-xl-4 col-md-6" data-aos="zoom-in" data-aos-delay="500">
 						<div class="service-item">
 							<div class="img">
 								<img src="{{ asset('img/lakat-balas/accomodations/car-camping.png') }}" class="img-fluid" alt="">
@@ -78,7 +78,7 @@
 								<div class="icon">
 									<i class="bi bi-car-front"></i>
 								</div>
-								<a href="#" class="stretched-link">
+								<a href="{{ route('booking.index') }}" class="stretched-link">
 									<h3>Car Camping</h3>
 								</a>
 								<p>Unplug and unwind with the convenience of your vehicle, blending adventure and comfort seamlessly.</p>

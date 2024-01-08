@@ -12,7 +12,7 @@
   <!-- Favicons -->
   <link href="{{ asset('img/herobiz/favicon.png') }}" rel="icon">
   <link href="{{ asset('img/herobiz/apple-touch-icon.png') }}" rel="apple-touch-icon">
-	<link rel="manifest" href="/site.webmanifest">
+	<link rel="manifest" href="/public/site-webmanifest.json">
 
 
   <!-- Google Fonts -->
@@ -67,5 +67,4 @@
   <script src="{{ asset('theme/herobiz/js/main.js') }}"></script>
 
 </body>
-
 </html>
