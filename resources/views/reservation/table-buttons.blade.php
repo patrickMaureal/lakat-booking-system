@@ -11,11 +11,12 @@
 
 			<a class="dropdown-item rounded-top" href="{{ route('reservations.show', $row['id']) }}"><span class="bi bi-pencil-fill me-2"></span>View Details</a>
 
-			@if ($row['status'] === 'Cancelled')
-				<button class="revert-reservation dropdown-item text-warning rounded-bottom" data-id="{{ $row['id'] }}"><span class="bi bi-backspace-fill me-2"></span>Revert</button>
+			@if ($row['status'] === 'Confirmed')
+				<button class="book-reservation dropdown-item text-warning rounded-bottom" data-id="{{ $row['id'] }}"><span class="bi bi-bookmark-check me-2"></span>Book</button>
+			@else
+				<button class="revert-reservation dropdown-item text-danger rounded-bottom" data-id="{{ $row['id'] }}"><span class="bi bi-file-earmark-x-fill me-2"></span>Revert</button>
 			@endif
 
-				{{-- <a class="dropdown-item text-success " target="_blank" href="{{ route('bookings.print', $row['id']) }}"><span class="bi bi-printer-fill me-2"></span>Print</a> --}}
 		@endif
 	</div>
 </div>
