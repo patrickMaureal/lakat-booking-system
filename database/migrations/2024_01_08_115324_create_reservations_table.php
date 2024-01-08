@@ -18,7 +18,7 @@ return new class extends Migration
 			$table->bigInteger('code_counter')->index();
 			$table->date('checkin_date')->nullable()->index();
 			$table->date('checkout_date')->nullable()->index();
-			$table->string('booking_status')->default('Pending');
+			$table->string('status')->default('Pending');
 			$table->string('payment_status')->default('Unpaid');
 			$table->timestamps();
 			$table->softDeletes();

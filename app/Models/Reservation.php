@@ -21,7 +21,7 @@ class Reservation extends Model
 		'code_counter',
 		'checkin_date',
 		'checkout_date',
-		'booking_status',
+		'status',
 		'payment_status',
 	];
 
