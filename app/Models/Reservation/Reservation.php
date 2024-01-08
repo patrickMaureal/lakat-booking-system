@@ -3,6 +3,7 @@
 namespace App\Models\Reservation;
 
 use App\Models\Accomodation\Accomodation;
+use App\Models\Booking\Booking;
 use App\Models\Payment\Payment;
 use App\Services\ReservationCodeService;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
@@ -53,6 +54,10 @@ class Reservation extends Model
 	public function payment(): HasOne
 	{
 		return $this->hasOne(Payment::class);
+	}
+	public function booking(): HasOne
+	{
+		return $this->hasOne(Booking::class);
 	}
 	public function accomodation(): BelongsTo
 	{
