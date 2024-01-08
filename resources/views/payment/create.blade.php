@@ -15,13 +15,13 @@
           <div class="row py-2">
             <div class="col-md-12 mb-3">
               <div class="form-group">
-                <label for="booking">Booking <x-asterisks /> </label>
-								<select name="booking" id="booking" class="form-control selectpicker @error('booking') is-invalid @enderror" required  data-live-search="true" title="Choose Booking">
-									@foreach ($bookings as $booking)
-										<option value="{{ $booking->id }}">{{ $booking->code }}</option>
+                <label for="reservation">Reservation <x-asterisks /> </label>
+								<select name="reservation" id="reservation" class="form-control selectpicker @error('reservation') is-invalid @enderror" required  data-live-search="true" title="Choose Reservation">
+									@foreach ($reservations as $reservation)
+										<option value="{{ $reservation->id }}">{{ $reservation->code }}</option>
 									@endforeach
 								</select>
-                @error('booking')
+                @error('reservation')
                 	<x-input-error message="{{ $message }}" />
                 @enderror
               </div>

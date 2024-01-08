@@ -23,9 +23,9 @@ class StorePaymentRequest extends FormRequest
 	public function rules(): array
 	{
 		return [
-			'booking' => [
+			'reservation' => [
 				'required',
-				Rule::exists('bookings', 'id'),
+				Rule::exists('reservations', 'id'),
 			],
 			'amount' => ['required', 'numeric'],
 		];

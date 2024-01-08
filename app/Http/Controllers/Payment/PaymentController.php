@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Payment;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Payment\StorePaymentRequest;
-use App\Models\Booking\Booking;
 use App\Models\Payment\Payment;
+use App\Models\Reservation\Reservation;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\DB;
@@ -26,8 +26,8 @@ class PaymentController extends Controller
 	{
 		if ($request->ajax()) {
 
-			$payments = Payment::join('bookings', 'payments.booking_id', '=', 'bookings.id')
-				->select('payments.id', 'payments.code as payment_code', 'bookings.code as code', 'amount', 'payments.created_at');
+			$payments = Payment::join('reservations', 'payments.reservation_id', '=', 'reservations.id')
+				->select('payments.id', 'payments.code as payment_code', 'reservations.code as code', 'amount', 'payments.created_at');
 
 			return DataTables::of($payments)
 				->editColumn('created_at', function ($row) {
@@ -43,8 +43,8 @@ class PaymentController extends Controller
 	 */
 	public function create()
 	{
-		$bookings = Booking::where('payment_status', 'Unpaid')->select('id', 'code')->get();
-		return view('payment.create', compact('bookings'));
+		$reservations = Reservation::where('payment_status', 'Unpaid')->select('id', 'code')->get();
+		return view('payment.create', compact('reservations'));
 	}
 
 	/**
@@ -54,21 +54,21 @@ class PaymentController extends Controller
 	{
 		$data = $request->validated();
 
-		$booking = Booking::findOrFail($data['booking']);
+		$reservation = Reservation::findOrFail($data['reservation']);
 
 		try {
 
 			DB::beginTransaction();
 
 			// add Payment
-			$booking->payment()->create([
+			$reservation->payment()->create([
 				'amount' => $data['amount']
 			]);
 
-			// update Booking status
-			$booking->booking_status = 'Confirmed';
-			$booking->payment_status = 'Paid';
-			$booking->save();
+			// update Reservation status
+			$reservation->status = 'Confirmed';
+			$reservation->payment_status = 'Paid';
+			$reservation->save();
 
 			DB::commit();
 
@@ -114,10 +114,10 @@ class PaymentController extends Controller
 	{
 		if ($request->ajax()) {
 
-			// revert Booking status
-			Booking::where('id', $payment->booking_id)->update([
+			// revert Reservation status
+			Reservation::where('id', $payment->reservation_id)->update([
 				'payment_status' => 'Unpaid',
-				'booking_status' => 'Pending'
+				'status' => 'Pending'
 			]);
 
 			// delete Payment

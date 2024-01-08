@@ -2,7 +2,7 @@
 
 namespace App\Models\Payment;
 
-use App\Models\Booking\Booking;
+use App\Models\Reservation\Reservation;
 use App\Services\PaymentCodeService;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -17,7 +17,7 @@ class Payment extends Model
 	protected $fillable = [
 		'code',
 		'code_counter',
-		'booking_id',
+		'reservation_id',
 		'amount',
 	];
 
@@ -35,8 +35,8 @@ class Payment extends Model
 		});
 	}
 
-	public function booking(): BelongsTo
+	public function reservation(): BelongsTo
 	{
-		return $this->belongsTo(Booking::class);
+		return $this->belongsTo(Reservation::class);
 	}
 }

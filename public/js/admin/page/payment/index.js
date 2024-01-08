@@ -27,7 +27,7 @@ $(function () {
 		},
 		columns: [
 			{ data: "payment_code", name: "payments.code" },
-			{ data: "code", name: "bookings.code" },
+			{ data: "code", name: "reservations.code" },
 			{ data: "amount", name: "payments.amount", searchable: false, },
 			{ data: "created_at", name: "payments.created_at" },
 			{
