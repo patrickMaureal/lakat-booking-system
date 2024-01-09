@@ -59,7 +59,7 @@ $(function () {
 	// end
 
 	//start => modal button checkin
-	$('body').on('click', '#delete-booking', function () {
+	$('body').on('click', '#checkin-booking', function () {
 		$.ajax({
 			type: 'PUT',
 			url: '/bookings/checkin/' + this_id,
