@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Reservation;
 
 use App\Http\Controllers\Controller;
+use App\Models\Accomodation\Accomodation;
 use App\Models\Reservation\Reservation;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -61,7 +63,17 @@ class ReservationController extends Controller
 	 */
 	public function show(Reservation $reservation)
 	{
-		return view('reservation.show', compact('reservation'));
+		$checkinSched = Carbon::parse($reservation->checkin_date);
+		$checkoutSched = Carbon::parse($reservation->checkout_date);
+
+		$numberOfDays = $checkinSched->diffInDays($checkoutSched)+1;
+
+		$accomodation = Accomodation::all()
+    ->where('id', $reservation->accomodation_id)
+    ->first();
+
+
+		return view('reservation.show', compact('reservation', 'checkinSched', 'checkoutSched', 'numberOfDays', 'accomodation'));
 	}
 
 	/**

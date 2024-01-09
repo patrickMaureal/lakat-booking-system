@@ -18,13 +18,13 @@
 										<div class="col-md-4">
 											<div>
 												<h3 class="h6 mb-1">Reservation Date</h3>
-												<p class="small pe-4">{{ $schedule['checkin_date'] }} - {{ $schedule['checkout_date'] }}</p>
+												<p class="small pe-4">{{ $checkinSched->format('Y-m-d') }} - {{ $checkoutSched->format('Y-m-d') }}</p>
 											</div>
 										</div>
 										<div class="col-md-4">
 											<div>
 												<h3 class="h6 mb-1">Total day/s</h3>
-												<p class="small pe-4">{{ $schedule['total_days'] }}</p>
+												<p class="small pe-4">{{ $numberOfDays }}</p>
 											</div>
 										</div>
 									</div>
@@ -83,52 +83,15 @@
 								</li>
 							</ul>
 						</div>
+
+						<div>
+							<a href="{{ route('reservations.index') }}" class="btn btn-primary mt-4">Back</a>
+						</div>
+
 					</div>
 				</div>
+
 			</div>
-
-			<div class="card border-0 shadow rounded mb-4">
-				<div class="card-header border-bottom d-flex align-items-center justify-content-between">
-					<h2 class="fs-5 mb-0">Contact Information</h2>
-				</div>
-				<div class="card-body">
-					<div class="table-responsive">
-						<table class="table table-centered table-nowrap mb-7 rounded border">
-							<thead class="thead-light">
-								<tr>
-									<th class="border-0 rounded-start">First Name</th>
-									<th class="border-0">Last Name</th>
-									<th class="border-0">Email</th>
-									<th class="border-0 rounded-end">Phone Number</th>
-								</tr>
-							</thead>
-							<tbody>
-								@foreach ($contactInformations as $customer)
-									<tr>
-										<td>
-											<a class="small fw-bold">{{ $customer['first_name'] }}</a>
-										</td>
-
-										<td>
-											<a class="small fw-bold">{{ $customer['last_name'] }}</a>
-										</td>
-
-										<td>
-											<a class="small fw-bold">{{ $customer['email'] }}</a>
-										</td>
-
-										<td>
-											<a class="small fw-bold">{{ $customer['phone_number'] }}</a>
-										</td>
-									</tr>
-								@endforeach
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div>
-
-
 
 		</div>
 	</div>
