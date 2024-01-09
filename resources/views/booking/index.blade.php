@@ -40,8 +40,6 @@
 						<th>Booking Code</th>
 						<th>Reservation Code</th>
 						<th>Confirmed At</th>
-						<th>Checkin Date</th>
-						<th>Checkout Date</th>
 						<th>Status</th>
 						<th>Action</th>
 					</tr>
@@ -57,7 +55,6 @@
 	<x-modal modal-id="checkin-booking-modal" button-id="checkin-booking" type="checkin" label="Booking" />
 	<x-modal modal-id="checkout-booking-modal" button-id="checkout-booking" type="checkout" label="Booking" /> --}}
 
-	{{-- Revert Booking --}}
 
 	@push('scripts')
 		<script type="text/javascript" src="{{ asset('js/admin/page/booking/index.js') }}"></script>

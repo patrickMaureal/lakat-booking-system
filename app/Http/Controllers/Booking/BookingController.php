@@ -21,20 +21,17 @@ class BookingController extends Controller
 	public function showTable(Request $request)
 	{
 		if ($request->ajax()) {
+
 			$bookings = Booking::join('reservations', 'bookings.reservation_id', '=', 'reservations.id')
-				->select('bookings.id', 'bookings.code as booking_code', 'reservations.code as code', 'reservations.checkin_date','reservations.checkout_date','bookings.created_at','bookings.status');
+				->select('bookings.id', 'bookings.code as booking_code', 'reservations.code as code','bookings.created_at','bookings.status');
 
 			return DataTables::of($bookings)
-				->editColumn('checkin_date', function ($row) {
-					return $row->checkin_date->format('F jS \of Y'); // human readable format
-				})
-				->editColumn('checkout_date', function ($row) {
-					return $row->checkout_date->format('F jS \of Y'); // human readable format
-				})
 				->editColumn('created_at', function ($row) {
 					return $row->created_at->format('F jS \of Y'); // human readable format
 				})
-				->addColumn('action', 'booking.table-buttons')
+				->addColumn('action', function ($row) {
+					return view('booking.table-buttons', compact('row'));
+				})
 				->rawColumns(['action', 'created_at'])
 				->toJson();
 		}

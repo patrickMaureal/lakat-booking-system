@@ -2,7 +2,7 @@ $(function () {
 	// holds the id when button click
 	let this_id;
 	// modals
-	let confirmModal = $('#confirm-reservation-modal');
+	let bookModal = $('#book-reservation-modal');
 	let cancelModal = $('#cancel-reservation-modal');
 	let revertModal = $('#revert-reservation-modal');
 
@@ -99,7 +99,7 @@ $(function () {
 	});
 	// end
 
-	//start => modal button revert
+	//start => modal button book
 	$('body').on('click', '#revert-reservation', function () {
 		$.ajax({
 			type: 'PUT',
@@ -125,6 +125,43 @@ $(function () {
 		.always(function (jqXHROrData, textStatus, jqXHROrErrorThrown) {
 			buttons('revert-reservation', 'finish');
 			revertModal.modal('hide');
+		});
+	});
+	// end
+
+	// start => button book
+	$('body').on('click', '.book-reservation', function () {
+		this_id = $(this).attr('data-id');
+		bookModal.modal('show');
+	});
+	// end
+
+	//start => modal button book
+	$('body').on('click', '#book-reservation', function () {
+		$.ajax({
+			type: 'POST',
+    	url: '/reservations/book/' + this_id,
+    	dataType: 'json',
+    	beforeSend: function () {
+        buttons('book-reservation', 'start');
+			}
+		})
+		.done(function (response) {
+			table.ajax.reload();
+			toast.fire({
+				icon: 'success',
+				title: response.message,
+			});
+		})
+		.fail(function (jqXHR, textStatus, errorThrown) {
+			toast.fire({
+				icon: 'error',
+				title: jqXHR.responseJSON.message,
+			});
+		})
+		.always(function (jqXHROrData, textStatus, jqXHROrErrorThrown) {
+			buttons('book-reservation', 'finish');
+			bookModal.modal('hide');
 		});
 	});
 	// end

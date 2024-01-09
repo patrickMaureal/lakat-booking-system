@@ -29,11 +29,9 @@ $(function () {
 			searchPlaceholder: "Search Records..",
 		},
 		columns: [
-			{ data: "bookings_code", name: "bookings.code" },
+			{ data: "booking_code", name: "bookings.code" },
 			{ data: "code", name: "reservations.code" },
 			{ data: "created_at", name: "bookings.created_at" },
-			{ data: "checkin_date", name: "reservations.checkin_date" },
-			{ data: "checkout_date", name: "reservations.checkout_date" },
 			{ data: "status", name: "bookings.status" },
 			{
 				data: "action",

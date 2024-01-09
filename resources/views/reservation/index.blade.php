@@ -58,6 +58,9 @@
 	{{-- Revert Booking --}}
 	<x-modal modal-id="revert-reservation-modal" button-id="revert-reservation" type="revert" label="Reservation" />
 
+	{{-- Book Reservation --}}
+	<x-modal modal-id="book-reservation-modal" button-id="book-reservation" type="book" label="Book" />
+
 	@push('scripts')
 		<script type="text/javascript" src="{{ asset('js/admin/page/reservation/index.js') }}"></script>
 	@endpush

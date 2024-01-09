@@ -107,6 +107,22 @@
 					</div>
 				@endif
 
+				@if($type === 'book')
+					<div class="modal-header">
+						<h5 class="modal-title">{{ $label }} Reservation</h5>
+						<span class="pull-right">
+							<img class="spinner" src="{{ asset('img/spinner.gif') }}">
+						</span>
+					</div>
+					<div class="modal-body">
+						<p>{{ $label }} Reservation?</p>
+					</div>
+					<div class="modal-footer">
+						<button id="close-button" data-bs-dismiss="modal" class="btn btn-outline-secondary"><i class="far fa-window-close"></i> No </button>
+						<button  id="{{ $buttonId }}" class="btn btn-outline-danger"><i class="far fa-square-check"></i> Yes </button>
+					</div>
+				@endif
+
       </div>
     </div>
   </div>
