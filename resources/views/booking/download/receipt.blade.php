@@ -131,9 +131,6 @@
 								<h2>Booking Code: <span style="font-weight: lighter">{{ $booking['code'] }}</span></h2>
 								<h2>Booking Created: <span style="font-weight: lighter">{{ $booking['created_at'] }}</span></h2>
 							</td>
-							<td style="text-align:right;">
-								<img src="data:image/svg+xml;base64,{{ $bookingQrCode }}" alt="Booking Qr Code">
-							</td>
 						</tr>
 					</tbody>
 				</table>

@@ -64,12 +64,8 @@ class Summary extends StepComponent
 		$this->dispatch('close-booking-confirmation-modal');
     $this->dispatch('swal', type:'success', title: 'Booking Success', text: 'Receipt will be downloaded automatically.', url: route('booking.index'));
 
-		// reservation qrcode
-		$reservationQrCode = base64_encode(QrCode::format('svg')->size(70)->generate( $reservation->code ));
-
 		// download receipt
 		$pdfContent = Pdf::loadView('reservation.download.receipt', [
-			'reservationQrCode' 					=> $reservationQrCode,
 			'reservation' 								=> $reservation,
 			'schedule' 										=> $this->schedule,
 			'accomodation' 								=> $this->accomodation,
