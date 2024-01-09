@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Booking\BookingController;
 use App\Http\Controllers\Booking\Checkin;
 use App\Http\Controllers\Booking\Checkout;
+use App\Http\Controllers\Booking\Revert;
 use App\Http\Controllers\Home\BookingController as HomeBookingController;
 use App\Http\Controllers\Payment\PaymentController;
 use App\Http\Controllers\ProfileController;
@@ -73,6 +74,7 @@ Route::middleware('auth')->group(function () {
 		Route::get('table', [BookingController::class, 'showTable'])->name('table');
 		Route::put('/checkin/{booking}', Checkin::class)->name('checkin');
 		Route::put('/checkout/{booking}', Checkout::class)->name('checkout');
+		Route::put('/revert/{booking}', Revert::class)->name('revert');
 	});
 	Route::resource('bookings', BookingController::class);
 

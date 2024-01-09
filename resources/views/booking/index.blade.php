@@ -49,8 +49,8 @@
 		</div>
 	</div>
 
-	{{-- Delete Booking --}}
-	{{-- <x-modal modal-id="delete-booking-modal" button-id="delete-booking" type="delete" label="Booking" /> --}}
+	{{-- revert Booking --}}
+	<x-modal modal-id="revert-booking-modal" button-id="revert-booking" type="revert" label="Booking" />
 
 	<x-modal modal-id="checkin-booking-modal" button-id="checkin-booking" type="checkin" label="Booking" />
 	<x-modal modal-id="checkout-booking-modal" button-id="checkout-booking" type="checkout" label="Booking" />

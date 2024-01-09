@@ -4,6 +4,7 @@ $(function () {
 	// modals
 	let checkinModal = $('#checkin-booking-modal');
 	let checkoutModal = $('#checkout-booking-modal');
+	let revertModal = $('#revert-booking-modal');
 
 
 	// start => datatable
@@ -124,4 +125,40 @@ $(function () {
 		});
 	});
 	// end
+
+	$('body').on('click', '.revert-booking', function () {
+		this_id = $(this).attr('data-id');
+		revertModal.modal('show');
+	});
+
+	$('body').on('click', '#revert-booking', function () {
+		$.ajax({
+			type: 'PUT',
+    	url: '/bookings/revert/' + this_id,
+    	dataType: 'json',
+    	beforeSend: function () {
+        buttons('revert-booking', 'start');
+			}
+		})
+		.done(function (response) {
+			table.ajax.reload();
+			toast.fire({
+				icon: 'success',
+				title: response.message,
+			});
+		})
+		.fail(function (jqXHR, textStatus, errorThrown) {
+			toast.fire({
+				icon: 'error',
+				title: jqXHR.responseJSON.message,
+			});
+		})
+		.always(function (jqXHROrData, textStatus, jqXHROrErrorThrown) {
+			buttons('revert-booking', 'finish');
+			revertModal.modal('hide');
+		});
+	});
+
+
+
 });
