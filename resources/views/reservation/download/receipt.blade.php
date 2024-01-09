@@ -99,9 +99,6 @@
 						<td>
 							<strong style="font-size:1.3rem;">LAKAT BALAS BEACH ADVENTURE CAMP</strong>
 						</td>
-						<td rowspan="4" style="width: 8%;">
-							<img src="{{ asset('img/lakat-balas-logo.jpg') }}" alt="" height="50px">
-						</td>
 					</tr>
 					<tr>
 						<td>
@@ -130,10 +127,6 @@
 							<td>
 								<h2>Reservation Code: <span style="font-weight: lighter">{{ $reservation['code'] }}</span></h2>
 								<h2>Reservation Created: <span style="font-weight: lighter">{{ $reservation['created_at'] }}</span></h2>
-								<h2>: <span style="font-weight: lighter">{{ $reservation['updated_at'] }}</span></h2>
-							</td>
-							<td style="text-align:right;">
-								<img src="data:image/svg+xml;base64,{{ $reservationQrCode }}" alt="Reservation Qr Code">
 							</td>
 						</tr>
 					</tbody>
