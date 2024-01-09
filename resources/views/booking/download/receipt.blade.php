@@ -99,9 +99,6 @@
 						<td>
 							<strong style="font-size:1.3rem;">LAKAT BALAS BEACH ADVENTURE CAMP</strong>
 						</td>
-						<td rowspan="4" style="width: 8%;">
-							<img src="{{ asset('img/lakat-balas-logo.jpg') }}" alt="" height="50px">
-						</td>
 					</tr>
 					<tr>
 						<td>
