@@ -8,7 +8,9 @@
 			<button class="checkin-booking dropdown-item text-success rounded-bottom" data-id="{{ $row['id'] }}"><span class="bi bi-check-circle-fill me-2"></span>Checkin</button>
 		@else
 			<button class="revert-booking dropdown-item text-warning rounded-bottom" data-id="{{ $row['id'] }}"><span class="bi bi-file-earmark-x-fill me-2"></span>Revert</button>
-			<button class="checkout-booking dropdown-item text-danger rounded-bottom" data-id="{{ $row['id'] }}"><span class="bi bi-x-circle-fill me-2"></span>Checkout</button>
+			@if ($row['status'] === 'Checked In')
+				<button class="checkout-booking dropdown-item text-danger rounded-bottom" data-id="{{ $row['id'] }}"><span class="bi bi-x-circle-fill me-2"></span>Checkout</button>
+			@endif
 		@endif
 	</div>
 </div>
