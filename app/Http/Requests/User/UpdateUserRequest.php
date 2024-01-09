@@ -28,13 +28,27 @@ class UpdateUserRequest extends FormRequest
 				'required',
 				'string',
 			],
+			'username' => [
+				'required',
+				'string',
+			],
+			'role' => [
+				'required',
+				'string',
+			],
 			'email' => [
 				'required',
 				'email',
-				Rule::unique('users', 'email')->ignore($this->user)
+				Rule::unique('users', 'email')
+			],
+			'contact_number' => [
+				'required',
+				'numeric',
+				'max_digits:11',
+				'min_digits:11'
 			],
 			'password' => [
-				'nullable',
+				'required',
 				'confirmed',
 				Password::default(),
 			],

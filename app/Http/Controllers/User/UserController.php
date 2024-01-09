@@ -9,6 +9,9 @@ use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpFoundation\Response;
+use Yajra\DataTables\Facades\DataTables;
 
 use App\Models\User;
 
@@ -19,17 +22,21 @@ class UserController extends Controller
 	 */
 	public function index(Request $request): View
 	{
-
-		// search input
-		$searchVal = $request->search ?? null;
-
-		// users
-		// paginate with query
-		$users = User::where('name', 'LIKE', '%'.$searchVal.'%')->whereNot('id', auth()->user()->id)->paginate(5)->withQueryString();
-		
-		return view('user.index', compact('users', 'searchVal'));
+		return view('user.index');
 	}
 
+	public function showTable(Request $request)
+	{
+		if ($request->ajax()) {
+
+			$users = User::where('id', '!=', Auth::id())->select('id', 'name', 'username', 'role', 'contact_number');
+
+			return DataTables::of($users)
+				->addColumn('action', 'user.table-buttons')
+				->rawColumns(['action', 'created_at'])
+				->toJson();
+		}
+	}
 	/**
 	 * Show the form for creating a new resource.
 	 */
@@ -47,14 +54,17 @@ class UserController extends Controller
 		$validated = $request->validated();
 
 		// store new User to database
-		$user 							= new User;
-		$user->name 				= $validated['name'];
-		$user->email 				= $validated['email'];
-		$user->password 		= Hash::make($validated['password']);
+		$user 								= new User;
+		$user->name 					= $validated['name'];
+		$user->username    	 	= $validated['username'];
+		$user->role						= $validated['role'];
+		$user->email 					= $validated['email'];
+		$user->contact_number = $validated['contact_number'];
+		$user->password 			= Hash::make($validated['password']);
 		$user->save();
 
-		// redirect to users page
-		return redirect()->route('users.index')->with('status', 'User has been successfully added.');
+		toast('User has been successfully added.', 'success');
+		return redirect()->route('users.index');
 	}
 
 	/**
@@ -70,7 +80,7 @@ class UserController extends Controller
 	 */
 	public function edit(string $id)
 	{
-		// 
+		//
 	}
 
 	/**
@@ -82,8 +92,11 @@ class UserController extends Controller
 		$validated = $request->validated();
 
 		// update User
-		$user->name 				= $validated['name'];
-		$user->email 				= $validated['email'];
+		$user->name 					= $validated['name'];
+		$user->username    	 	= $validated['username'];
+		$user->role						= $validated['role'];
+		$user->email 					= $validated['email'];
+		$user->contact_number = $validated['contact_number'];
 
 		if ($request->has('password')) {
 			// dd($request->password);
@@ -92,20 +105,23 @@ class UserController extends Controller
 
 		$user->update();
 
-		// redirect to users page
-		return redirect()->route('users.index')->with('status', 'User has been successfully updated.');
+		toast('User has been successfully updated.', 'success');
+		return redirect()->route('users.index');
 	}
 
 	/**
 	 * Remove the specified resource from storage.
 	 */
-	public function destroy(User $user): RedirectResponse
+	public function destroy(Request $request, User $user)
 	{
-		// delete User
-		$user->delete();
+		if ($request->ajax()) {
 
-		// redirect to users page
-		return redirect()->route('users.index')->with('status', 'User has been successfully deleted.');
+			$user->delete();
 
+			return response()->json([
+				'success'  => true,
+				'message'  => 'User has been successfully deleted.'
+			], Response::HTTP_OK);
+		}
 	}
 }

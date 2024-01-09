@@ -7,7 +7,10 @@ This boilerplate uses Laravel PHP Framework V10 and Volt Bootstrap Admin Templat
 
  - System Authentication
  - Account Profile 
- - Users Management
+ - Accomodation Management
+ - Reservation Management
+ - Booking Management
+ - Payments
 
 ## Installation
 
@@ -21,7 +24,7 @@ This boilerplate uses Laravel PHP Framework V10 and Volt Bootstrap Admin Templat
 		DB_CONNECTION=mysql
 		DB_HOST=127.0.0.1
 		DB_PORT=3306
-		DB_DATABASE=contact_management_system_db
+		DB_DATABASE=lakat_booking_system_db
 		DB_USERNAME=root
 		DB_PASSWORD=
 	```
