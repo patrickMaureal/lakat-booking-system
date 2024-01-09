@@ -8,6 +8,7 @@ This boilerplate uses Laravel PHP Framework V10 and Volt Bootstrap Admin Templat
  - System Authentication
  - Account Profile 
  - Accomodation Management
+ - Reservation Management
  - Booking Management
  - Payments
 
